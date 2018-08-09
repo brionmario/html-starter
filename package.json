@@ -1,0 +1,42 @@
+{
+    "title": "Gulp Static Seed by Aparecium Labs",
+    "name": "gulp-static-seed",
+    "version": "0.1.0",
+    "description": "A Gulp starter kit for HTML5 static website development with a congenial build process",
+    "keywords": [
+        "gulp",
+        "css",
+        "sass",
+        "html",
+        "responsive",
+        "apareciumlabs",
+        "seed"
+    ],
+    "homepage": "https://github.com/brionmario/gulp-static-seed",
+    "bugs": {
+        "url": "https://github.com/brionmario/gulp-static-seed/issues",
+        "email": "support@apareciumalabs.com"
+    },
+    "license": "MIT",
+    "author": "Brion Silva",
+    "contributors": [],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/brionmario/gulp-static-seed.git"
+    },
+    "dependencies": {
+        "bootstrap": "4.1.1",
+        "font-awesome": "4.7.0",
+        "jquery": "3.3.1"
+    },
+    "devDependencies": {
+        "all-contributors-cli": "^5.4.0",
+        "browser-sync": "2.24.5",
+        "gulp": "^3.9.1",
+        "gulp-clean-css": "3.9.4",
+        "gulp-header": "2.0.5",
+        "gulp-rename": "1.3.0",
+        "gulp-sass": "4.0.1",
+        "gulp-uglify": "3.0.0"
+    }
+}
