@@ -1,0 +1,44 @@
+
+.footer {
+  text-align: center;
+  padding: $footer-padding;
+  border-top: $footer-border-top;
+  .footer-icons > li {
+    > a {
+      display: inline-block;
+      font-size: $footer-icons-font-size;
+      padding: 0;
+    }
+    > a > i {
+      display: inline-block;
+      height: 35px;
+      line-height: 33px;
+      transition: all .2s;
+      border-radius: 40px;
+      text-align: center;
+      width: 35px;
+      &[class*="facebook"] {
+        color: $facebook-icon-color;
+        border-color: $facebook-icon-color;
+      }
+      &[class*="twitter"] {
+        color: $twitter-icon-color;
+        border-color: $twitter-icon-color;
+      }
+      &[class*="github"] {
+        color: $github-icon-color;
+        border-color: $github-icon-color;
+      }
+    }
+  }
+  .copyright {
+    font-size: $footer-copyright-font-size;
+    img {
+      margin: 0 5px;
+    }
+    p {
+      color: $black;
+      display: inline-block;
+    }
+  }
+}

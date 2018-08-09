@@ -1,0 +1,51 @@
+.center-text {
+  text-align: center;
+}
+.display-table {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.display-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+::-webkit-input-placeholder {
+  font-size: .9em;
+  letter-spacing: 1px;
+}
+::-moz-placeholder {
+  font-size: .9em;
+  letter-spacing: 1px;
+}
+:-ms-input-placeholder {
+  font-size: .9em;
+  letter-spacing: 1px;
+}
+:-moz-placeholder {
+  font-size: .9em;
+  letter-spacing: 1px;
+}
+.full-height {
+  height: 100%;
+}
+.position-static {
+  position: static;
+}
+.font-white {
+  color: $white;
+}
+.main-area{
+  position: relative;
+  height: $main-content-area-height;
+  color: $white;
+}
+.overlay{
+  background-repeat: no-repeat;
+  background-image: url(../assets/img/bg.png);
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  opacity: 1;
+  visibility: inherit;
+}

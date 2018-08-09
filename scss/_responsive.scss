@@ -1,0 +1,77 @@
+/* Screens Resolution : 992px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 1200px) {}
+
+/* Screens Resolution : 992px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 992px) {
+  .main-area {
+    position: relative;
+    height: 200vh;
+  }
+  .right-section {
+    float: none;
+    width: 100%;
+    height: 50%;
+    .content {
+      padding: 40px 0;
+    }
+  }
+  .content .email-input-area {
+    width: 100%;
+    .email-input {
+      padding: 0 115px 0 20px;
+    }
+    .submit-btn {
+      width: 80px;
+    }
+  }
+  .right-section .footer-icons > li > a > i {
+    height: 30px;
+    line-height: 28px;
+    width: 30px;
+  }
+  .left-section {
+    position: static;
+    width: 100%;
+    height: 50%;
+  }
+}
+
+/* Screens Resolution : 767px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 767px) {
+  p {
+    line-height: 1.4;
+  }
+  h1 {
+    font-size: 2.8em;
+    line-height: 1;
+  }
+  h2 {
+    font-size: 2.2em;
+    line-height: 1.1;
+  }
+  h3 {
+    font-size: 1.8em;
+  }
+}
+
+/* Screens Resolution : 479px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 479px) {
+  body {
+    font-size: 13px;
+  }
+  .right-section {
+    padding: 0 30px;
+  }
+}
+
+/* Screens Resolution : 359px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 359px) {}
+
+/* Screens Resolution : 290px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 290px) {}
