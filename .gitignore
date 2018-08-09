@@ -32,10 +32,6 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directories
-node_modules/
-jspm_packages/
-
 # TypeScript v1 declaration files
 typings/
 
@@ -77,6 +73,7 @@ node_modules
 /bower_components/
 npm-debug.log
 /npm-debug.log.*
+jspm_packages/
 
 # Coverage #
 /coverage/
@@ -105,15 +102,6 @@ dll/
 /doc/
 /documentation/
 
-# IDEs and editors
-.idea/
-*.swp
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -121,9 +109,14 @@ dll/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# e2e
-/e2e/*.js
-/e2e/*.map
+# Other IDEs and editors
+.idea/
+*.swp
+.project
+.classpath
+.c9/
+*.launch
+.settings/
 
 # misc
 /.sass-cache
