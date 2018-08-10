@@ -10,21 +10,13 @@
   "commit": true,
   "contributors": [
     {
-      "login": "jfmengels",
-      "name": "Jeroen Engels",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/3869412?v=4",
-      "profile": "https://github.com/jfmengels",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
       "login": "brionmario",
       "name": "Brion Mario",
       "avatar_url": "https://avatars3.githubusercontent.com/u/25959096?v=4",
-      "profile": "https://www.linkedin.com/in/brion-mario/",
+      "profile": "http://www.brionmario.com/",
       "contributions": [
-        "code"
+        "code",
+        "doc"
       ]
     }
   ]
