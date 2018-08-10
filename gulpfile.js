@@ -48,7 +48,7 @@ gulp.task('vendor', function() {
 });
 
 // Lint Javascript
-gulp.task('js-lint', function () {
+gulp.task('js:lint', function () {
   return gulp.src('./js/**/*.js')
     .pipe(eslint())
     .pipe(eslint.format())
@@ -68,7 +68,7 @@ gulp.task('css:compile', function() {
 });
 
 // Lint SCSS
-gulp.task('sass-lint', function () {
+gulp.task('sass:lint', function () {
   return gulp.src('scss/**/*.s+(a|c)ss')
     .pipe(sassLint({
       options: {
