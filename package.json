@@ -25,6 +25,17 @@
     "url": "https://github.com/brionmario/gulp-static-seed.git"
   },
   "scripts": {
+    "start": "gulp dev",
+    "build:css": "gulp css",
+    "build:js": "gulp js",
+    "build": "gulp",
+    "lint:js": "gulp js:lint",
+    "lint:sass": "gulp sass:lint",
+    "lint": "npm run lint:js && npm run lint:sass",
+    "minify:css": "gulp css:minify",
+    "minify:js": "gulp js:minify",
+    "minify": "npm run minify:js && npm run minify:css",
+    "vendor": "gulp vendor",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
