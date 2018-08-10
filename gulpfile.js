@@ -141,3 +141,9 @@ gulp.task('dev', ['css', 'js', 'browserSync'], function() {
   gulp.watch('./js/*.js', ['js']);
   gulp.watch('./*.html', browserSync.reload);
 });
+
+// Dev task with linting in watch mode
+gulp.task('watch:dev', ['dev'], function() {
+  gulp.watch('./js/**/*.js', ['js:lint']);
+  gulp.watch('./scss/**/*.s+(a|c)ss', ['sass:lint']);
+});
