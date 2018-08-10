@@ -10,10 +10,13 @@
 </h1>
 <p align="center" style="font-size: 1.2rem;">A Gulp starter kit for HTML5 static website development with a congenial build process</p>
 
+<p align="center">
+
+[![Build Status](https://travis-ci.org/brionmario/gulp-static-seed.svg?branch=master)](https://travis-ci.org/brionmario/gulp-static-seed)
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
-<hr/>
+</p>
 
 ## Built With
 
@@ -24,8 +27,6 @@
 <a href="https://jquery.com/"><img style="display:inline-block;margin: 5px 10px" src="https://cdn-images-1.medium.com/max/1600/0*g3ns8QALNBBH7CBA." alt="jquery" height="30" /></a>&nbsp;&nbsp;
 
 ## Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
