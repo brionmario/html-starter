@@ -5,6 +5,7 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var sassLint = require('gulp-sass-lint');
+var eslint = require('gulp-eslint');
 var pkg = require('./package.json');
 var browserSync = require('browser-sync').create();
 
@@ -44,6 +45,14 @@ gulp.task('vendor', function() {
       '!./node_modules/jquery/dist/core.js'
     ])
     .pipe(gulp.dest('./vendor/jquery'))
+});
+
+// Lint Javascript
+gulp.task('js-lint', function () {
+  return gulp.src('./js/**/*.js')
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 // Compile SCSS
