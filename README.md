@@ -13,7 +13,7 @@
 <p align="center">
 
 [![Build Status](https://travis-ci.org/brionmario/gulp-static-seed.svg?branch=master)](https://travis-ci.org/brionmario/gulp-static-seed)
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
 </p>
@@ -30,6 +30,8 @@
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
+| [<img src="https://avatars1.githubusercontent.com/u/3869412?v=4" width="80px;"/><br /><sub><b>Jeroen Engels</b></sub>](https://github.com/jfmengels)<br />[📖](https://github.com/Brion Mario/gulp-static-seed/commits?author=jfmengels "Documentation") |
+| :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
