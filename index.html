@@ -17,6 +17,9 @@
   <link rel="manifest" href="./assets/icons/favicon_package/site.webmanifest">
   <link rel="mask-icon" href="./assets/icons/favicon_package/safari-pinned-tab.svg" color="#5bbad5">
 
+  <!-- Custom Javascript Files -->
+  <script type="text/javascript" src="./js/global.min.js"></script>
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -79,14 +82,7 @@
     <li><a href="https://github.com/apareciumlabs" target="_blank"><i class="fa fa-github"></i></a></li>
   </ul>
   <div class="copyright">
-    <p>&copy; Copyright
-      <script language="JavaScript" type="text/javascript">
-        now = new Date;
-        theYear = now.getYear();
-        if (theYear < 1900)
-          theYear = theYear + 1900;
-        document.write(theYear)
-      </script>
+    <p>&copy; Copyright <script language="JavaScript" type="text/javascript">document.write(getYear())</script>
     </p>
     <img src="assets/img/logo_aparecium_fox_only.svg" width="20px" height="20px"/>
     <p>Aparecium Labs. All rights reserved.</p>
