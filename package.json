@@ -36,6 +36,7 @@
     "minify:js": "gulp js:minify",
     "minify": "npm run minify:js && npm run minify:css",
     "vendor": "gulp vendor",
+    "watch:dev": "gulp watch:dev",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
