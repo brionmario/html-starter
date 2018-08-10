@@ -4,6 +4,7 @@ var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
+var sassLint = require('gulp-sass-lint');
 var pkg = require('./package.json');
 var browserSync = require('browser-sync').create();
 
@@ -55,6 +56,25 @@ gulp.task('css:compile', function() {
       pkg: pkg
     }))
     .pipe(gulp.dest('./css'))
+});
+
+// Lint SCSS
+gulp.task('sass-lint', function () {
+  return gulp.src('scss/**/*.s+(a|c)ss')
+    .pipe(sassLint({
+      options: {
+        formatter: 'stylish',
+        'merge-default-rules': false
+      },
+      files: {ignore: 'node_modules/**/*.s+(a|c)ss'},
+      rules: {
+        'no-ids': 1,
+        'no-mergeable-selectors': 0
+      },
+      configFile: '.sass-lint.yml'
+    }))
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError())
 });
 
 // Minify CSS
