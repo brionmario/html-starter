@@ -1,4 +1,4 @@
-# Contributing to Matrix24x7-Management
+# Contributing to Gulp Static Seed
 
 As a contributor, here are the guidelines we would like you to follow:
 
@@ -34,11 +34,14 @@ Samples:
 docs(readme): update readme
 ```
 ```
-fix(tabs): fix issue in the log viewer tabs
+build: add watch mode for js and sass linting
 
-There was an issue with tabs not getting active on click.
+With this change, the dev mode could be run with the javascript and sass linting in watch mode.
 
-Closes #856456
+Fixes #125
+Closes #168
+
+PR Close #456
 ```
 
 ### Revert
@@ -63,10 +66,11 @@ The scope should be the name of the component affected.
 
 Example `<scope>` values:
 
-* **notifications**
-* **config**
-* **linters**
-* **utils**
+* **js**
+* **assets**
+* **scss**
+* **vendor**
+* **lint**
 
 There are currently a few exceptions to the "use package name" rule:
 
