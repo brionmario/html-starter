@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "gulp dev",
-    "build:css": "gulp css",
+    "build:sass": "gulp css",
     "build:js": "gulp js",
     "build": "gulp",
     "lint:js": "gulp js:lint; exit 0",
