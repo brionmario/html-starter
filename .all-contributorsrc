@@ -1,6 +1,6 @@
 {
   "projectName": "gulp-static-seed",
-  "projectOwner": "Brion Mario",
+  "projectOwner": "brionmario",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -16,7 +16,9 @@
       "profile": "http://www.brionmario.com/",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "bug",
+        "test"
       ]
     }
   ]
