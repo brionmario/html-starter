@@ -204,7 +204,10 @@ For example if you want to include the styles for a slider:
 # Deployment
 
 ## Netlify
+
 Deploy to [Netlify](https://www.netlify.com/) using this template with one single click. It has an awesome free plan and a nifty [CLI](https://github.com/netlify/netlify-cli) which makes the deployment process much easier.
+
+Click [here](https://apareciumlabs-gulp-static-seed.netlify.com/) to see the deployed app.
 
 <!-- Markdown snippet -->
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/brionmario/gulp-static-seed)
@@ -218,8 +221,8 @@ Deploy to [Netlify](https://www.netlify.com/) using this template with one singl
 <a href="https://jquery.com/"><img style="display:inline-block;margin: 5px 10px" src="https://cdn-images-1.medium.com/max/1600/0*g3ns8QALNBBH7CBA." alt="jquery" height="30" /></a>&nbsp;&nbsp;
 
 # Contributing
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contributing guidelines and to learn about our code of conduct.
 
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contributing guidelines and to learn about our code of conduct.
 
 # Contributors
 
@@ -232,4 +235,5 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contributing guidelines and t
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
 # Copyright and License
+
 Copyright &copy; 2018 Aparecium Labs. This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
