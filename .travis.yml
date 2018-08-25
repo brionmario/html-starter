@@ -2,13 +2,22 @@ sudo: false
 language: node_js
 node_js:
   - "node"
-install:
+
+cache:
+  directories:
+    - node_modules
+
+matrix:
+  fast_finish: true
+
+before_install:
+  - npm install -g npm@5
   - npm install -g codecov
+
+install:
   - npm install
+
 script:
   - codecov
   - npm run test
   - npm run build
-cache:
-  directories:
-    - node_modules
