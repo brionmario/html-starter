@@ -23,6 +23,9 @@
   <a href="LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" height="18">
   </a>
+  <a href="https://codecov.io/gh/brionmario/gulp-static-seed">
+  <img src="https://codecov.io/gh/brionmario/gulp-static-seed/branch/master/graph/badge.svg" />
+</a>
 </p>
 
 This repository could be used by anyone who's looking for a quick starter kit for static website development. This boilerplate uses [Gulp](https://gulpjs.com/) for building and automating the workflow. Following are some key features we've included for you.
