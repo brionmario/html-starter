@@ -20,6 +20,9 @@ npm-debug.log
 /npm-debug.log.*
 jspm_packages/
 
+# Test coverage directories
+coverage
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
