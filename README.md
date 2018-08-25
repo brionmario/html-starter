@@ -1,7 +1,7 @@
 <p align="center">
-    <img style="display:block;text-align:center" src="https://user-images.githubusercontent.com/25959096/43851144-7c0697f4-9b57-11e8-972b-cb5c6af9a01b.png" alt="logo" width="400" />
-    <img style="display:block;text-align:center" src="https://user-images.githubusercontent.com/25959096/43851190-96e4c596-9b57-11e8-9653-74657d00a99f.png" alt="logo-text" width="600" />
-    <h3 align="center">:construction:&ensp;&ensp;Work In Progress&ensp;&ensp;:construction:</h3>
+    <img style="display:block;text-align:center" src="https://user-images.githubusercontent.com/25959096/43851144-7c0697f4-9b57-11e8-972b-cb5c6af9a01b.png" alt="logo" width="300" />
+    <br/><br/>
+    <img style="display:block;text-align:center" src="https://user-images.githubusercontent.com/25959096/43851190-96e4c596-9b57-11e8-9653-74657d00a99f.png" alt="logo-text" width="500" />
     <h1 align="center">Gulp Static Seed</h1>
     <p align="center" style="font-size: 1.2rem;">A Gulp starter kit for HTML5 static website development with a congenial build process</p>
 </p>
@@ -25,14 +25,14 @@
   </a>
 </p>
 
-
 This repository could be used by anyone who's looking for a quick starter kit for static website development. This boilerplate uses [Gulp](https://gulpjs.com/) for building and automating the workflow. Following are some key features we've included for you.
+
 * Usage of [Sass: Syntactically Awesome Style Sheets](https://sass-lang.com/) over CSS.
 * Ready to go build system using Gulp.
 * Ability to use your favorite npm packages.
 * Organized easy to use folder structure for beginners.
 
-### Quick start
+# Quick start
 
 > The generated project have dependencies that require `node` together with `npm`.
 
@@ -57,12 +57,14 @@ npm start
 Once the dev server is fired up, it'll automatically open up a new tab. If not, navigate to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) manually in your browser.
 
 # Table of Contents
+
 * [File Structure](#file-structure)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Setting Up](#setting-up)
   * [Running the app](#running-the-app)
 * [Configuration](#configuration)
+  * [Add third-party dependencies](#add-third-party-dependencies)
 * [Styling](#styling)
 * [Deployment](#deployment)
   * [Netlify](#netlify)
@@ -70,7 +72,6 @@ Once the dev server is fired up, it'll automatically open up a new tab. If not, 
 * [Contributing](#contributing)
 * [Contributors](#contributors)
 * [Copyright and License](#copyright-and-license)
-
 
 # File Structure
 
@@ -101,7 +102,9 @@ gulp-static-seed/
 ```
 
 # Getting Started
+
 ## Prerequisites
+
 What you need to run this app:
 
 * The generated project have dependencies that require `node` together with `npm`.
@@ -115,19 +118,23 @@ What you need to run this app:
 If you do not have them installed, click [here](https://nodejs.org/en/download/) and grab the latest stable version of `node` and `npm` will be automatically installed along with it. Or if you have `brew` already installed in your local machine, execute `brew install node` command to get `node`.
 
 Once you have those, you should install these dependencies:
+
 * `gulp-cli` (`npm install gulp-cli --global`)
 * `gulp` (`npm install --global webpack-dev-server`)
 
 ## Setting Up
+
 * `clone` the repository
 * `cd gulp-static-seed` to change the directory
 * `npm install` to install the dependencies with npm
 
 ## Running the app
+
 After you have installed all dependencies you can now run the app. Run `npm start` to start a local server using `gulp` which will watch your stylesheets and javascript files for changes, compile, minify, build and reload the browser automatically using `browser-sync` library.
 The dev server will be opened in a new tab and usually on http://localhost:3000 and the Access URLs will be displayed on the terminal.
 
-#### server
+### server
+
 ```bash
 npm start
 ```
@@ -135,6 +142,7 @@ npm start
 ### Other commands
 
 #### build files
+
 ```bash
 # all
 npm run build
@@ -145,11 +153,13 @@ npm run build:sass
 ```
 
 #### copy the libraries you want to have on the runtime from `node_modules` to vendor folder
+
 ```bash
 npm run vendor
 ```
 
 #### linting
+
 ```bash
 # all
 npm run lint
@@ -160,6 +170,7 @@ npm run lint:sass
 ```
 
 #### minify
+
 ```bash
 # all
 npm run minify
@@ -170,30 +181,55 @@ npm run minify:css
 ```
 
 #### watch for code quality(linting) and run the dev server
+
 ```bash
 npm run watch:dev
 ```
 
 # Configuration
-The `gulp` tasks are defined inside the `gulpfile.js` file found on the root of the application and you need to extend this file if you want to use any third party libraries other than the included `bootstrap`, `font-awesome` and `jquery` libs.
 
-Go in to the folder and scroll down to the `vendor` gulp task and link your dependency.
+The `gulp` tasks are defined inside the `gulpfile.js` file found on the root of the application and you need to extend this file if you want to customize the application.
+
+## Add third-party dependencies
+
+To use any third party libraries other than the included `bootstrap`, `font-awesome` and `jquery` libs, go to the `gulpfile.js` and scroll down to the `vendor` gulp task and link your dependency.
+
 Take a look at the bellow example:
 
-Lets say that you want to add Google'a Material Design Icon Pack.
+Lets say that you want to add Animate CSS to your project.
+
+First install [animate.css](https://www.npmjs.com/package/animate.css) from npm registry and save it as a dependency in your project.
 
 ```bash
+npm install animate.css --save
+```
+
+After successfully adding the dependeny, go to the `gulpfile.js` and append the following block of code inside the `vendor` task. This will create a folder named `animate-css` inside the vendor folder and copy all the files with the `.css` extension from the node_module.
+
+```js
 
 gulp.task('vendor', function() {
 
   ......
 
+  // Animate CSS
+  gulp.src([
+    './node_modules/animate.css/*.css'
+  ])
+  .pipe(gulp.dest('./vendor/animate-css'));
 
 });
 
 ```
 
+Then, simply link the CSS file under the `<header>` tag in the `index.html`.
+
+```html
+<link href="vendor/animate-css/animate.min.css" rel="stylesheet">
+```
+
 # Styling
+
 The `styles.scss` file inside the `scss` directory is the main stylesheet for the project and will be compiled and minified into an external `.css` and is embedded in the `index.html` file.
 If you want to add your own stylesheet, we recommend that you place it under the `scss/partials` folder and import it in the `styles.scss` file.
 
