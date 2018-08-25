@@ -36,6 +36,9 @@ jspm_packages/
 *.launch
 .settings/
 
+# Deployment Files
+.netlify
+
 # misc
 /.sass-cache
 /connect.lock

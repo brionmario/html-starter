@@ -59,11 +59,13 @@ Once the dev server is fired up, it'll automatically open up a new tab. If not, 
 # Table of Contents
 * [File Structure](#file-structure)
 * [Getting Started](#getting-started)
-    * [Prerequisites](#prerequisites)
-    * [Setting Up](#setting-up)
-    * [Running the app](#running-the-app)
+  * [Prerequisites](#prerequisites)
+  * [Setting Up](#setting-up)
+  * [Running the app](#running-the-app)
 * [Configuration](#configuration)
 * [Styling](#styling)
+* [Deployment](#deployment)
+  * [Netlify](#netlify)
 * [Built With](#built-with)
 * [Contributing](#contributing)
 * [Contributors](#contributors)
@@ -198,6 +200,14 @@ If you want to add your own stylesheet, we recommend that you place it under the
 For example if you want to include the styles for a slider:
 1) Create a `_slider.scss` partial file in the `scss/partials` directory.
 3) In `styles.scss` add `@import 'partials/slider.scss';`
+
+# Deployment
+
+## Netlify
+Deploy to [Netlify](https://www.netlify.com/) using this template with one single click. It has an awesome free plan and a nifty [CLI](https://github.com/netlify/netlify-cli) which makes the deployment process much easier.
+
+<!-- Markdown snippet -->
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/brionmario/gulp-static-seed)
 
 # Built With
 
