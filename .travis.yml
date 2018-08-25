@@ -2,8 +2,11 @@ sudo: false
 language: node_js
 node_js:
   - "node"
-install: npm install
+install:
+  - npm install -g codecov
+  - npm install
 script:
+  - codecov
   - npm run test
   - npm run build
 cache:
