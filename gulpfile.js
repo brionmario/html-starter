@@ -1,16 +1,16 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var header = require('gulp-header');
-var cleanCSS = require('gulp-clean-css');
-var rename = require("gulp-rename");
-var uglify = require('gulp-uglify-es').default;
-var sassLint = require('gulp-sass-lint');
-var eslint = require('gulp-eslint');
-var pkg = require('./package.json');
-var browserSync = require('browser-sync').create();
+let gulp = require('gulp');
+let sass = require('gulp-sass');
+let header = require('gulp-header');
+let cleanCSS = require('gulp-clean-css');
+let rename = require("gulp-rename");
+let uglify = require('gulp-uglify-es').default;
+let sassLint = require('gulp-sass-lint');
+let eslint = require('gulp-eslint');
+let pkg = require('./package.json');
+let browserSync = require('browser-sync').create();
 
 // Set the banner content
-var banner = ['/*!\n',
+const banner = ['/*!\n',
   ' * <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
   ' * Copyright Ⓒ ' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
   ' * Licensed under <%= pkg.license %> (https://github.com/apareciumlabs/<%= pkg.name %>/blob/master/LICENSE)\n',
