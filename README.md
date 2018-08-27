@@ -120,11 +120,7 @@ What you need to run this app:
 
 If you do not have them installed, click [here](https://nodejs.org/en/download/) and grab the latest stable version of `node` and `npm` will be automatically installed along with it. Or if you have `brew` already installed in your local machine, execute `brew install node` command to get `node`.
 
-Once you have those, you should install these dependencies:
-
-* `gulp-cli` (`npm install gulp-cli --global`)
-* `gulp` (`npm install --global webpack-dev-server`)
-
+Though the project is built on top of gulp, we've created npm scripts to run gulp tasks. So you don't have to install gulp or gulp CLI globally on your working machine.
 ## Setting Up
 
 * `clone` the repository
