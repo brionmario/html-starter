@@ -74,7 +74,7 @@ Once the dev server is fired up, it'll automatically open up a new tab. If not, 
 * [Built With](#built-with)
 * [Contributing](#contributing)
 * [Contributors](#contributors)
-* [Copyright and License](#copyright-and-license)
+* [License](#license)
 
 # File Structure
 
@@ -269,6 +269,6 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contributing guidelines and t
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
-# Copyright and License
+# License
 
-Copyright &copy; 2018 Aparecium Labs. This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
