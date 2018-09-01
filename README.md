@@ -1,9 +1,8 @@
 <p align="center">
-    <img style="display:block;text-align:center" src="https://user-images.githubusercontent.com/25959096/43851144-7c0697f4-9b57-11e8-972b-cb5c6af9a01b.png" alt="logo" width="300" />
-    <br/><br/>
-    <img style="display:block;text-align:center" src="https://user-images.githubusercontent.com/25959096/43851190-96e4c596-9b57-11e8-9653-74657d00a99f.png" alt="logo-text" width="500" />
+    <img style="display:block;text-align:center" src="./docs/gulp-statics-seed.svg" alt="logo-text" width="600" />
+    <br/>
     <h1 align="center">Gulp Static Seed</h1>
-    <p align="center" style="font-size: 1.2rem;">A Gulp starter kit for HTML5 static website development with a congenial build process</p>
+    <p align="center" style="font-size: 1.2rem;">A Gulp starter kit for HTML5 static website development with a congenial build process and an optimized SASS workflow</p>
 </p>
 
 <!-- Badges -->
@@ -249,11 +248,11 @@ Click [here](https://apareciumlabs-gulp-static-seed.netlify.com/) to see the dep
 
 # Built With
 
-<a href="https://www.npmjs.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/640px-Npm-logo.svg.png" alt="npm" height="20" /></a>&nbsp;&nbsp;
-<a href="https://sass-lang.com/"><img src="https://sass-lang.com/assets/img/styleguide/color-1c4aab2b.png" alt="sass" height="30" /></a>&nbsp;&nbsp;
-<a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/"><img  src="https://camo.githubusercontent.com/8f12b9c1c1759161b9238fd2cec75fa26aad23e1/68747470733a2f2f676574626f6f7473747261702e636f6d2f646f63732f342e312f6173736574732f6272616e642f626f6f7473747261702d736f6c69642e737667" alt="bootstrap" height="30" /></a>&nbsp;&nbsp;
-<a href="https://gulpjs.com/"><img style="display:inline-block;margin: 5px 10px" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png" alt="gulp" height="30" /></a>&nbsp;&nbsp;
-<a href="https://jquery.com/"><img style="display:inline-block;margin: 5px 10px" src="https://cdn-images-1.medium.com/max/1600/0*g3ns8QALNBBH7CBA." alt="jquery" height="30" /></a>&nbsp;&nbsp;
+<a href="https://www.npmjs.com/"><img src="./docs/readme-resources/npm.svg" alt="npm" height="20" /></a>&nbsp;&nbsp;
+<a href="https://sass-lang.com/"><img src="./docs/readme-resources/sass.svg" alt="sass" height="30" /></a>&nbsp;&nbsp;
+<a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/"><img  src="./docs/readme-resources/boostrap.svg" alt="bootstrap" height="30" /></a>&nbsp;&nbsp;
+<a href="https://gulpjs.com/"><img style="display:inline-block;margin: 5px 10px" src="./docs/readme-resources/gulp.svg" alt="gulp" height="30" /></a>
+<a href="https://jquery.com/"><img style="display:inline-block;margin: 5px 10px" src="./docs/readme-resources/jquery.svg" alt="jquery" height="30" /></a>&nbsp;&nbsp;
 
 # Contributing
 
