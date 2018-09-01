@@ -9,16 +9,29 @@ let eslint = require('gulp-eslint');
 let pkg = require('./package.json');
 let browserSync = require('browser-sync').create();
 
-// Set the banner content
-const banner = ['/*!\n',
-  ' * <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
-  ' * Copyright Ⓒ ' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
-  ' * Licensed under <%= pkg.license %> (https://github.com/apareciumlabs/<%= pkg.name %>/blob/master/LICENSE)\n',
-  ' */\n',
+/**
+ * Banner for the compiled CSS files
+ */
+const banner = [
+  '/*! ========================================================================= *\n',
+	' *  <%= pkg.title %> \n',
+	' *  ========================================================================= *\n',
+	' *  Version: <%= pkg.version %>\n',
+	' *  Author: <%= pkg.author %>\n',
+	' *  ========================================================================= *\n',
+	' *  GitHub Repo: <%= pkg.repository.url %>\n',
+	' *  ========================================================================= *\n',
+  ' *  Copyright Ⓒ ' + (new Date()).getFullYear(),'\n',
+  ' *  Licensed under <%= pkg.license %>\n',
+  ' *  ========================================================================= *\n',
+  ' */\n\n',
   ''
 ].join('');
 
-// Copy third party libraries from /node_modules into /vendor
+/**
+ * This task copies the third party libraries needed for the runtime
+ * from ./node_modules into ./vendor folder.
+ */
 gulp.task('vendor', function() {
 
   // Bootstrap
@@ -47,7 +60,9 @@ gulp.task('vendor', function() {
     .pipe(gulp.dest('./vendor/jquery'))
 });
 
-// Lint Javascript
+/**
+ * This task is responsible for linting the Javascript files.
+ */
 gulp.task('js:lint', function () {
   return gulp.src('./js/**/*.js')
     .pipe(eslint())
@@ -55,7 +70,9 @@ gulp.task('js:lint', function () {
     .pipe(eslint.failAfterError());
 });
 
-// Compile SCSS
+/**
+ * This task compiles SASS files to CSS.
+ */
 gulp.task('css:compile', function() {
   return gulp.src('./scss/**/*.scss')
     .pipe(sass.sync({
@@ -67,7 +84,9 @@ gulp.task('css:compile', function() {
     .pipe(gulp.dest('./css'))
 });
 
-// Lint SCSS
+/**
+ * This task is responsible for linting the SASS files.
+ */
 gulp.task('sass:lint', function () {
   return gulp.src('scss/**/*.s+(a|c)ss')
     .pipe(sassLint({
@@ -86,7 +105,9 @@ gulp.task('sass:lint', function () {
     .pipe(sassLint.failOnError())
 });
 
-// Minify CSS
+/**
+ * This minifies CSS files.
+ */
 gulp.task('css:minify', ['css:compile'], function() {
   return gulp.src([
       './css/*.css',
@@ -100,10 +121,14 @@ gulp.task('css:minify', ['css:compile'], function() {
     .pipe(browserSync.stream());
 });
 
-// CSS
+/**
+ * This task will run CSS complile and minify tasks all together.
+ */
 gulp.task('css', ['css:compile', 'css:minify']);
 
-// Minify JavaScript
+/**
+ * This task minifies Javascript files.
+ */
 gulp.task('js:minify', function() {
   return gulp.src([
       './js/*.js',
@@ -120,13 +145,19 @@ gulp.task('js:minify', function() {
     .pipe(browserSync.stream());
 });
 
-// JS
+/**
+ * This task runs the Javascript minify task.
+ */
 gulp.task('js', ['js:minify']);
 
-// Default task
+/**
+ * The Default 'gulp' task which runs the CSS, JS and Vendor tasks at once.
+ */
 gulp.task('default', ['css', 'js', 'vendor']);
 
-// Configure the browserSync task
+/**
+ * This tasks initialises and runs the browserSync.
+ */
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
@@ -135,14 +166,18 @@ gulp.task('browserSync', function() {
   });
 });
 
-// Dev task
+/**
+ * The Dev task which runs CSS and JS tasks with browserSync.
+ */
 gulp.task('dev', ['css', 'js', 'browserSync'], function() {
   gulp.watch('./scss/*.scss', ['css']);
   gulp.watch('./js/*.js', ['js']);
   gulp.watch('./*.html', browserSync.reload);
 });
 
-// Dev task with linting in watch mode
+/**
+ * This task runs the dev task in watch mode.
+ */
 gulp.task('watch:dev', ['dev'], function() {
   gulp.watch('./js/**/*.js', ['js:lint']);
   gulp.watch('./scss/**/*.s+(a|c)ss', ['sass:lint']);
