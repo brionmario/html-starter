@@ -1,0 +1,43 @@
+{
+  "name": "gulp-static-seed",
+  "description": "A Gulp starter kit for HTML5 static website development with a congenial build process",
+  "main": "",
+  "authors": [
+    "Brion Silva"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "gulp",
+    "css",
+    "sass",
+    "html",
+    "responsive",
+    "apareciumlabs",
+    "seed"
+  ],
+  "homepage": "https://github.com/brionmario/gulp-static-seed",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "3.3.4",
+    "font-awesome": "~4.4.0"
+  },
+  "overrides":{
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css",
+        "fonts/fontawesome-webfont.eot",
+        "fonts/fontawesome-webfont.woff",
+        "fonts/fontawesome-webfont.ttf",
+        "fonts/fontawesome-webfont.svg"
+      ]
+    }
+  }
+}
