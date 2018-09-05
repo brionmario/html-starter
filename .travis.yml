@@ -10,6 +10,8 @@ matrix:
 before_install:
   - npm install -g npm@5
   - npm install -g codecov
+  - npm install -g bower
+  - bower install
 install:
   - npm install
 script:
