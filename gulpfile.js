@@ -178,6 +178,7 @@ gulp.task('styles:build', () => {
     .pipe(gutil.env.env === 'production'
       ? gulp.dest(PATHS.build.styles)
       : gulp.dest(PATHS.dev.styles))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('styles:lint', function () {
@@ -207,23 +208,6 @@ gulp.task('clean', () => {
   } else {
     return del([PATHS.dev.root, PATHS.build.root])
   }
-});
-
-gulp.task('move:pages', () => {
-  return gulp.src([
-    PATHS.src.index,
-    `${PATHS.src.components}/**/*`,
-    `${PATHS.src.pages}/**/*`,
-  ], { base: PATHS.src.root })
-    .pipe(gutil.env.env === 'production'
-      ? htmlmin({
-        collapseWhitespace: true,
-        removeComments: true
-      })
-      : gutil.noop())
-    .pipe(gutil.env.env === 'production'
-      ? gulp.dest(PATHS.build.root)
-      : gulp.dest(PATHS.dev.root))
 });
 
 gulp.task('move:assets', () => {
@@ -323,7 +307,7 @@ gulp.task('inject', () => {
     )
     .pipe(gutil.env.env === 'production'
       ? gulp.dest(PATHS.build.root)
-      : gulp.dest(PATHS.dev.root));
+      : gulp.dest(PATHS.dev.root))
 });
 
 gulp.task('build',
@@ -336,32 +320,33 @@ gulp.task('build',
 gulp.task('browserSync', (callback) => {
   browserSync.init({
     server: {
-      baseDir: gutil.env.base
-        ? gutil.env.base
-        : PATHS.dev.root
+      baseDir: PATHS.dev.root
     },
   });
   callback();
 });
 
 gulp.task('watch:styles', () => {
-  gulp.watch(`${PATHS.src.styles}/**/*.s+(a|c)ss`, gulp.series('styles:build'));
+  gulp.watch(`${PATHS.src.styles}/**/*.s+(a|c)ss`, gulp.series('styles:build'))
 });
 
 gulp.task('watch:scripts', () => {
-  gulp.watch(`${PATHS.src.scripts}/**/*.js`, gulp.series('scripts:build'));
+  gulp.watch(`${PATHS.src.scripts}/**/*.js`, gulp.series('scripts:build'))
+    .on('change', browserSync.reload);
 });
 
 gulp.task('watch:pages', () => {
-  gulp.watch(PATHS.src.index, gulp.series('move:pages'));
-  gulp.watch(`${PATHS.src.components}/**/*`, gulp.series('move:pages'));
-  gulp.watch(`${PATHS.src.pages}/**/*`, gulp.series('move:pages'));
+  gulp.watch([
+    PATHS.src.index, `${PATHS.src.components}/**/*`, `${PATHS.src.pages}/**/*`
+  ], gulp.series('inject'))
+    .on('change', browserSync.reload);
 });
 
 gulp.task('watch:assets', () => {
-  gulp.watch(`${PATHS.src.assets}/**/*`, gulp.series('move:assets'));
+  gulp.watch(`${PATHS.src.assets}/**/*`, gulp.series('move:assets'))
+    .on('change', browserSync.reload);
 });
 
 gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts', 'watch:pages', 'watch:assets'));
 
-gulp.task('serve:dev', gulp.series('build', 'browserSync', 'watch'));
+gulp.task('serve:dev', gulp.series('browserSync', 'watch'));
