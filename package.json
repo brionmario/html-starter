@@ -10,10 +10,10 @@
     "email": "opensource@apareciumalabs.com"
   },
   "license": "MIT",
-  "author": "Brion Silva",
+  "author": "Brion Mario",
   "contributors": [
     {
-      "name": "Brion Silva",
+      "name": "Brion Mario",
       "email": "brion@apareciumlabs.com",
       "url": "https://github.com/brionmario"
     }
@@ -40,21 +40,26 @@
     "collectCoverage": true
   },
   "scripts": {
-    "start": "gulp dev",
-    "build:sass": "gulp css",
-    "build:js": "gulp js",
-    "build": "gulp",
-    "lint:js": "gulp js:lint; exit 0",
-    "lint:sass": "gulp sass:lint",
-    "lint": "npm run lint:js && npm run lint:sass",
-    "minify:css": "gulp css:minify",
-    "minify:js": "gulp js:minify",
-    "minify": "npm run minify:js && npm run minify:css",
-    "vendor": "gulp vendor",
-    "watch:dev": "gulp watch:dev",
-    "test": "jest && codecov",
+    "build:dev": "npm run clean:temp && gulp build --env=development",
+    "build:prod": "npm run clean:dist && gulp build --env=production",
+    "build": "npm run build:dev",
     "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "contributors:generate": "all-contributors generate",
+    "clean:temp":  "gulp clean --env=development",
+    "clean:dist":  "gulp clean --env=production",
+    "clean": "gulp clean --env=all",
+    "gulp": "gulp",
+    "gulp-dev-server": "gulp browserSync --base=.temp",
+    "lint:scripts": "gulp scripts:lint; exit 0",
+    "lint:styles": "gulp styles:lint",
+    "lint": "npm run lint:scripts && npm run lint:styles",
+    "server:dev": "npm run build:dev && npm run gulp-dev-server && npm run watch",
+    "server:prod": "npm run build:prod && http-server dist -a 192.168.8.101 -o",
+    "server": "npm run server:dev",
+    "start": "npm run server",
+    "test": "jest && codecov",
+    "watch:dev": "gulp watch",
+    "watch": "npm run watch:dev"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -82,6 +87,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "gulp-util": "^3.0.8",
+    "http-server": "^0.11.1",
     "jest": "^23.5.0",
     "main-bower-files": "^2.13.1",
     "wiredep": "^4.0.0"

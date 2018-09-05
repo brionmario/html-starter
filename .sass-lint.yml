@@ -1,10 +1,10 @@
 # @author - Brion Silva
 # Copyright © 2018 Aparecium Labs. All Rights Reserved
 
-scss_files: 'scss/**/*.scss'
+scss_files: 'src/**/*.s+(a|c)ss'
 
 exclude:
-  - 'node_modules/**/*.scss'
+  - 'node_modules/**/*.s+(a|c)ss'
 
 linters:
   # Reports when you use improper spacing around ! (the "bang") in !default,

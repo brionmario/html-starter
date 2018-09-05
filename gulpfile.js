@@ -181,7 +181,7 @@ gulp.task('styles:build', () => {
 });
 
 gulp.task('styles:lint', function () {
-  return gulp.src(`${PATHS.src}/sass/**/*.s+(a|c)ss`)
+  return gulp.src(`${PATHS.src.root}/**/*.s+(a|c)ss`)
     .pipe(sassLint({
       options: {
         formatter: 'stylish',
@@ -198,7 +198,15 @@ gulp.task('styles:lint', function () {
 });
 
 gulp.task('clean', () => {
-  return del([PATHS.dev.root, PATHS.build.root])
+  if (gutil.env.env === 'production') {
+    return del(PATHS.build.root);
+  } else if (gutil.env.env === 'development') {
+    return del(PATHS.dev.root);
+  } else if (gutil.env.env === 'all') {
+    return del([PATHS.dev.root, PATHS.build.root])
+  } else {
+    return del([PATHS.dev.root, PATHS.build.root])
+  }
 });
 
 gulp.task('move:pages', () => {
@@ -320,7 +328,7 @@ gulp.task('inject', () => {
 
 gulp.task('build',
   gulp.series(
-    'clean', 'move:assets', 'move:vendor:fonts', gulp.parallel('scripts:build', 'styles:build'), 'bundle:vendor', 'inject'
+    'move:assets', 'move:vendor:fonts', gulp.parallel('scripts:build', 'styles:build'), 'bundle:vendor', 'inject'
   ), (callback) => {
     callback();
 });
@@ -328,7 +336,9 @@ gulp.task('build',
 gulp.task('browserSync', (callback) => {
   browserSync.init({
     server: {
-      baseDir: PATHS.dev.root
+      baseDir: gutil.env.base
+        ? gutil.env.base
+        : PATHS.dev.root
     },
   });
   callback();
