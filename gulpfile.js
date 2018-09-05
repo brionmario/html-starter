@@ -1,17 +1,25 @@
-let gulp = require('gulp');
-let autoprefixer = require('gulp-autoprefixer');
-let del = require('del');
-let htmlmin = require('gulp-htmlmin');
-let runSequence = require('run-sequence');
-let sass = require('gulp-sass');
-let header = require('gulp-header');
-let cleanCSS = require('gulp-clean-css');
-let rename = require("gulp-rename");
-let uglify = require('gulp-uglify-es').default;
-let sassLint = require('gulp-sass-lint');
-let eslint = require('gulp-eslint');
-let pkg = require('./package.json');
-let browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+const inject = require('gulp-inject');
+const gutil = require('gulp-util');
+const imagemin = require('gulp-imagemin');
+const autoprefixer = require('gulp-autoprefixer');
+const del = require('del');
+const htmlmin = require('gulp-htmlmin');
+const sass = require('gulp-sass');
+const header = require('gulp-header');
+const cleanCSS = require('gulp-clean-css');
+const rename = require("gulp-rename");
+const sassLint = require('gulp-sass-lint');
+const eslint = require('gulp-eslint');
+const pkg = require('./package.json');
+const browserSync = require('browser-sync');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
+const wiredep = require('wiredep');
+const urlAdjuster = require('gulp-css-url-adjuster');
+const bowerlibs = require('main-bower-files');
 
 /**
  * Browser Support declaration
@@ -49,82 +57,98 @@ const banner = [
   ''
 ].join('');
 
-/**
- * Gulp Task - gulp vendor
- *
- * Copies the third party libraries needed for the runtime
- * from ./node_modules into ./vendor folder.
- */
-gulp.task('vendor:copy', function() {
-  // Bootstrap
-  gulp.src([
-      './node_modules/bootstrap/dist/**/*',
-      '!./node_modules/bootstrap/dist/css/bootstrap-grid*',
-      '!./node_modules/bootstrap/dist/css/bootstrap-reboot*'
-    ])
-    .pipe(gulp.dest('./src/vendor/bootstrap'));
+const PATHS = {
+  dev: {
+    root: '.temp',
+    scripts: '.temp/js',
+    styles: '.temp/css',
+    pages: '.temp/pages',
+    components: '.temp/components',
+    assets: '.temp/assets',
+    fonts: '.temp/assets/fonts',
+  },
+  src: {
+    root: 'src',
+    scripts: 'src/scripts',
+    styles: 'src/sass',
+    pages: 'src/pages',
+    components: 'src/components',
+    index: 'src/index.html',
+    assets: 'src/assets',
+    fonts: 'src/assets/fonts',
+    vendor: 'src/vendor',
+  },
+  build: {
+    root: 'dist',
+    scripts: 'dist/js',
+    styles: 'dist/css',
+    pages: 'dist/pages',
+    assets: 'dist/assets',
+    fonts: 'dist/assets/fonts',
+    components: 'dist/components',
+  },
+};
 
-  // Font Awesome
-  gulp.src([
-      './node_modules/font-awesome/**/*',
-      '!./node_modules/font-awesome/{less,less/*}',
-      '!./node_modules/font-awesome/{scss,scss/*}',
-      '!./node_modules/font-awesome/.*',
-      '!./node_modules/font-awesome/*.{txt,json,md}'
-    ])
-    .pipe(gulp.dest('./src/vendor/font-awesome'));
+const CONFIG = {
+  filenames: {
+    dev: {
+      scripts: 'main.js',
+      vendorJS: 'vendor.js',
+      vendorCSS: 'vendor.css',
+      styles: 'styles.css',
+    },
+    build: {
+      scripts: 'main.bundle.js',
+      vendorJS: 'vendor.bundle.js',
+      vendorCSS: 'vendor.bundle.css',
+      styles: 'styles.bundle.css',
+    }
+  }
+};
 
-  // jQuery
-  gulp.src([
-      './node_modules/jquery/dist/*',
-      '!./node_modules/jquery/dist/core.js'
-    ])
-    .pipe(gulp.dest('./src/vendor/jquery'))
-});
-
-/**
- * Gulp Task - gulp js:build
- *
- * Minify the Javascript file excluding tests and output
- * them to the dist folder.
- */
-gulp.task('js:minify', function() {
+gulp.task('scripts:build', () => {
   return gulp.src([
-    './src/js/**/*.js',
-    '!./src/js/**/*.test.js',
+    `${PATHS.src.scripts}/**/*.js`,
+    `!${PATHS.src.scripts}/**/*.test.js`,
   ])
-    .pipe(uglify())
-    .pipe(rename({
-      suffix: '.min'
+    .pipe(gutil.env.env === 'production'
+      ? gutil.noop()
+      : sourcemaps.init())
+    .pipe(babel({
+      presets: ['@babel/env']
     }))
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
-    .pipe(gulp.dest('./dist/js'))
-    .pipe(browserSync.stream());
+    .pipe(gutil.env.env === 'production'
+      ? gutil.noop()
+      : sourcemaps.write())
+    .pipe(gutil.env.env === 'production'
+      ? concat(CONFIG.filenames.build.scripts)
+      : concat(CONFIG.filenames.dev.scripts))
+    .pipe(gutil.env.env === 'production'
+      ? uglify()
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? rename({
+        suffix: '.min'
+      })
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? header(banner, {
+        pkg: pkg
+      })
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? gulp.dest(`${PATHS.build.scripts}`)
+      : gulp.dest(`${PATHS.dev.scripts}`))
 });
 
-/**
- * Gulp Task - gulp js:lint
- *
- * Lints the Javascript files using the es-lint plugin.
- */
-gulp.task('js:lint', function () {
-  return gulp.src('./src/js/**/*.js')
+gulp.task('scripts:lint', () => {
+  return gulp.src(`${PATHS.src.scripts}/**/*.js`)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
 });
 
-/**
- * Gulp Task - gulp sass:build
- *
- * Builds the SASS files converting them to CSS and
- * prefixes the classes for cross browser support.
- * Finally minify the file and output it to dist.
- */
-gulp.task('sass:build', function() {
-  return gulp.src('./src/sass/**/*.scss')
+gulp.task('styles:build', () => {
+  return gulp.src(`${PATHS.src.styles}/**/*.s+(a|c)ss`)
     .pipe(sass({
       outputStyle: 'nested',
       precision: 10,
@@ -132,30 +156,38 @@ gulp.task('sass:build', function() {
       onError: console.error.bind(console, 'Sass error:')
     }))
     .pipe(autoprefixer({browsers: AUTO_PREFIX_BROWSERS}))
-    .pipe(header(banner, {
-      pkg: pkg
+    .pipe(urlAdjuster({
+      prependRelative: '../',
     }))
-    .pipe(cleanCSS())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('./dist/css'))
-    .pipe(browserSync.stream());
+    .pipe(gutil.env.env === 'production'
+      ? concat(CONFIG.filenames.build.styles)
+      : concat(CONFIG.filenames.dev.styles))
+    .pipe(gutil.env.env === 'production'
+      ? header(banner, {
+        pkg: pkg
+      })
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? cleanCSS()
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? rename({
+        suffix: '.min'
+      })
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? gulp.dest(PATHS.build.styles)
+      : gulp.dest(PATHS.dev.styles))
 });
 
-/**
- * Gulp Task - gulp sass:lint
- *
- * Lints SASS stylesheets.
- */
-gulp.task('sass:lint', function () {
-  return gulp.src('./src/sass/**/*.s+(a|c)ss')
+gulp.task('styles:lint', function () {
+  return gulp.src(`${PATHS.src}/sass/**/*.s+(a|c)ss`)
     .pipe(sassLint({
       options: {
         formatter: 'stylish',
         'merge-default-rules': false
       },
-      files: {ignore: 'node_modules/**/*.s+(a|c)ss'},
+      files: {ignore: 'node_modules/!**!/!*.s+(a|c)ss'},
       rules: {
         'no-ids': 1,
         'no-mergeable-selectors': 0
@@ -163,79 +195,163 @@ gulp.task('sass:lint', function () {
       configFile: '.sass-lint.yml'
     }))
     .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
 });
 
-/**
- * Gulp Task - gulp html:minify
- *
- * Minify HTML files.
- */
-gulp.task('html:minify', function() {
-  return gulp.src(['./src/**/*.html'])
-    .pipe(htmlmin({
-      collapseWhitespace: true,
-      removeComments: true
-    }))
-    .pipe(gulp.dest('./dist'));
+gulp.task('clean', () => {
+  return del([PATHS.dev.root, PATHS.build.root])
 });
 
-/**
- * Gulp Task - gulp clean
- *
- * Cleans the distribution folder.
- */
-gulp.task('clean', () => del(['dist']));
+gulp.task('move:pages', () => {
+  return gulp.src([
+    PATHS.src.index,
+    `${PATHS.src.components}/**/*`,
+    `${PATHS.src.pages}/**/*`,
+  ], { base: PATHS.src.root })
+    .pipe(gutil.env.env === 'production'
+      ? htmlmin({
+        collapseWhitespace: true,
+        removeComments: true
+      })
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? gulp.dest(PATHS.build.root)
+      : gulp.dest(PATHS.dev.root))
+});
 
-/**
- * Gulp Task - gulp
- *
- * The Default 'gulp' task which cleans the dist folder
- * first and runs the following tasks in sequence,
- *  1. gulp sass:build - Builds SASS
- *  2. gulp js:minify - Minify Javascript
- *  3. gulp vendor:copy - Copy the vendor libs
- *  4. gulp html:minify - Minify HTML files.
- */
-gulp.task('default', ['clean'], function () {
-  runSequence(
-    'sass:build',
-    'js:minify',
-    'vendor:copy',
-    'html:minify'
+gulp.task('move:assets', () => {
+  return gulp.src([
+    `${PATHS.src.assets}/**/*`,
+  ], { base: PATHS.src.root })
+    .pipe(gutil.env.env === 'production'
+      ? imagemin()
+      : gutil.noop())
+    .pipe(gutil.env.env === 'production'
+      ? gulp.dest(PATHS.build.root)
+      : gulp.dest(PATHS.dev.root))
+});
+
+gulp.task('move:vendor:fonts', () => {
+  return gulp.src(bowerlibs('**/*.{eot,svg,ttf,woff,woff2}'))
+    .pipe(gutil.env.env === 'production'
+      ? gulp.dest(PATHS.build.fonts)
+      : gulp.dest(PATHS.dev.fonts)
   );
 });
 
-/**
- * Gulp Task - gulp browserSync
- *
- * Initialises and runs the browserSync.
- */
-gulp.task('browserSync', function() {
+gulp.task('bundle:vendor', () => {
+  let target = gulp.src([
+    PATHS.src.index,
+    `${PATHS.src.components}/**/*.{html|jade|php}`,
+    `${PATHS.src.pages}/**/*.{html|jade|php}`,
+  ], { base: PATHS.src.root });
+
+  let js = gulp.src(wiredep().js);
+  let css = gulp.src(wiredep().css);
+
+  return target
+    .pipe(
+      inject(js.pipe(concat(gutil.env.env === 'production'
+        ? CONFIG.filenames.build.vendorJS
+        : CONFIG.filenames.dev.vendorJS))
+        .pipe(gutil.env.env === 'production'
+          ? gulp.dest(PATHS.build.scripts)
+          : gulp.dest(PATHS.dev.scripts))
+      )
+    )
+    .pipe(
+      inject(css.pipe(concat(gutil.env.env === 'production'
+        ? CONFIG.filenames.build.vendorCSS
+        : CONFIG.filenames.dev.vendorCSS))
+        .pipe(urlAdjuster({
+          replace:  ['../fonts','../assets/fonts'],
+        }))
+        .pipe(gutil.env.env === 'production'
+          ? gulp.dest(PATHS.build.styles)
+          : gulp.dest(PATHS.dev.styles))
+      )
+    )
+});
+
+gulp.task('inject', () => {
+  let target = gulp.src([
+    PATHS.src.index,
+    `${PATHS.src.components}/**/*.{html|jade|php}`,
+    `${PATHS.src.pages}/**/*.{html|jade|php}`,
+  ], { base: PATHS.src.root });
+
+  let devSources = gulp.src(
+    [`${PATHS.dev.scripts}/**/*.js`, `${PATHS.dev.styles}/**/*.css`, `!${PATHS.dev.scripts}/**/*.test.js`,],
+    {
+      read: false
+    }
+  );
+
+  let devInjectionOptions = {
+    ignorePath: PATHS.dev.root,
+    addRootSlash: false
+  };
+
+  let prodSources = gulp.src(
+    [`${PATHS.build.scripts}/**/*.js`, `${PATHS.build.styles}/**/*.css`, `!${PATHS.build.scripts}/**/*.test.js`,],
+    {read: false}
+  );
+
+  let prodInjectionOptions = {
+    ignorePath: PATHS.build.root,
+    addRootSlash: false
+  };
+
+  return target
+    .pipe(gutil.env.env === 'production'
+      ? htmlmin({
+        collapseWhitespace: true,
+        removeComments: true
+      })
+      : gutil.noop())
+    .pipe(
+      gutil.env.env === 'production'
+        ? inject(prodSources, prodInjectionOptions)
+        : inject(devSources, devInjectionOptions)
+    )
+    .pipe(gutil.env.env === 'production'
+      ? gulp.dest(PATHS.build.root)
+      : gulp.dest(PATHS.dev.root));
+});
+
+gulp.task('build',
+  gulp.series(
+    'clean', 'move:assets', 'move:vendor:fonts', gulp.parallel('scripts:build', 'styles:build'), 'bundle:vendor', 'inject'
+  ), (callback) => {
+    callback();
+});
+
+gulp.task('browserSync', (callback) => {
   browserSync.init({
     server: {
-      baseDir: "./"
-    }
+      baseDir: PATHS.dev.root
+    },
   });
+  callback();
 });
 
-/**
- * Gulp Task - gulp dev
- *
- * The Dev task which runs CSS and JS tasks with browserSync.
- */
-gulp.task('dev', ['css', 'js', 'browserSync'], function() {
-  gulp.watch('./src/sass/**/*.sass', ['sass:build']);
-  gulp.watch('./src/js/**/*.js', ['js:minify']);
-  gulp.watch('./src/**/*.html', browserSync.reload);
+gulp.task('watch:styles', () => {
+  gulp.watch(`${PATHS.src.styles}/**/*.s+(a|c)ss`, gulp.series('styles:build'));
 });
 
-/**
- * Gulp Task - gulp watch:dev
- *
- * This task runs the dev task in watch mode.
- */
-gulp.task('watch:dev', ['dev'], function() {
-  gulp.watch('./src/js/**/*.js', ['js:lint']);
-  gulp.watch('./src/sass/**/*.s+(a|c)ss', ['sass:lint']);
+gulp.task('watch:scripts', () => {
+  gulp.watch(`${PATHS.src.scripts}/**/*.js`, gulp.series('scripts:build'));
 });
+
+gulp.task('watch:pages', () => {
+  gulp.watch(PATHS.src.index, gulp.series('move:pages'));
+  gulp.watch(`${PATHS.src.components}/**/*`, gulp.series('move:pages'));
+  gulp.watch(`${PATHS.src.pages}/**/*`, gulp.series('move:pages'));
+});
+
+gulp.task('watch:assets', () => {
+  gulp.watch(`${PATHS.src.assets}/**/*`, gulp.series('move:assets'));
+});
+
+gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts', 'watch:pages', 'watch:assets'));
+
+gulp.task('serve:dev', gulp.series('build', 'browserSync', 'watch'));
