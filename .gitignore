@@ -3,7 +3,7 @@ dist
 .temp
 
 #Vendor packages
-src/vendor
+/src/vendor/
 
 # Optional eslint cache
 .eslintcache
