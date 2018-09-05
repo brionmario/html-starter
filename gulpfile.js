@@ -297,7 +297,6 @@ gulp.task('inject', () => {
     .pipe(gutil.env.env === 'production'
       ? htmlmin({
         collapseWhitespace: true,
-        removeComments: true
       })
       : gutil.noop())
     .pipe(
