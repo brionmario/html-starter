@@ -1,7 +1,7 @@
 {
   "title": "Gulp Static Seed by Aparecium Labs",
   "name": "gulp-static-seed",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.0",
   "private": true,
   "description": "A Gulp starter kit for HTML5 static website development with a congenial build process",
   "homepage": "https://github.com/brionmario/gulp-static-seed#README.md",
@@ -52,11 +52,13 @@
     "lint:scripts": "gulp scripts:lint; exit 0",
     "lint:styles": "gulp styles:lint",
     "lint": "npm run lint:scripts && npm run lint:styles",
+    "semver": "npm version $(semver $npm_package_version -i $release --preid $preid)",
     "server:dev": "npm run build:dev && gulp serve:dev",
     "server:prod": "npm run build:prod && http-server dist -a 192.168.8.101 -o",
     "server": "npm run server:dev",
     "start": "npm run server",
     "test": "jest && codecov",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "watch:dev": "gulp watch",
     "watch": "npm run watch:dev"
   },
@@ -91,5 +93,8 @@
     "jest": "^23.5.0",
     "main-bower-files": "^2.13.1",
     "wiredep": "^4.0.0"
+  },
+  "dependencies": {
+    "semver": "^5.5.1"
   }
 }
