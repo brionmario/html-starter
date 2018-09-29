@@ -1,7 +1,7 @@
 {
   "title": "Gulp Static Seed by Aparecium Labs",
   "name": "gulp-static-seed",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.0",
   "private": true,
   "description": "A Gulp starter kit for HTML5 static website development with a congenial build process",
   "homepage": "https://github.com/brionmario/gulp-static-seed#README.md",
