@@ -31,7 +31,8 @@ This repository could be used by anyone who's looking for a quick starter kit fo
 
 * Usage of [Sass: Syntactically Awesome Style Sheets](https://sass-lang.com/) over CSS.
 * Ready to go build system using Gulp.
-* Ability to use your favorite npm packages.
+* Simplified development process with npm scripts.
+* Ability to use your favorite bower packages.
 * Organized easy to use folder structure for beginners.
 
 # Quick start
@@ -79,24 +80,33 @@ Once the dev server is fired up, it'll automatically open up a new tab. If not, 
 
 ```
 gulp-static-seed/
- ├── assets/                        * static assets such as images, icons, fonts goes here
- ├── css/                           * the compiled main stylesheet and it's minified version is in this folder
- ├── js/                            * external javascript files are placed here
+ ├── docs/                          * contains documents and document resources
  ├── node_modules/                  * contains dependencies pulled from npm
- ├── scss/                          * styles folder
- │   ├── partials/                  * place all the sass partial stylesheets in this folder
- │   └── styles.scss                * the main stylesheet for the project which gets compiled to CSS
- │
- ├── vendor/                        * third party depencies you want to use in your project goes here.
+ ├── src/                           * styles folder
+ │   ├── assets/                    * static assets such as images, icons, fonts goes here
+ │   ├── scss/                      * styles folder
+ │   │   ├── partials/              * place all the sass partial stylesheets in this folder
+ │   │   └── styles.scss            * the main stylesheet for the project which gets compiled to CSS
+ │   ├── scripts/                   * custom javascript script files
+ │   ├── vendor/                    * third party bower libraries will be copied here
+ │   └── index.html                 * entry HTML file.
  ├── .all-contributorsrc            * contains info ablout repo contributors
+ ├── .bowerrc                       * bower config file
+ ├── .dockerignore                  * contains files that are ignored from docker
  ├── .editorconfig                  * helps define and maintain consistent coding styles between different editors and IDEs
  ├── .eslintrc                      * ecmascript linting configuration file
  ├── .gitignore                     * contains files that are ignored from git
+ ├── .netlify.toml                  * netlify config file
+ ├── .npmrc                         * npm config file to house project wide custom configs
+ ├── .nvmrc                         * node version manager config file
+ ├── .pullapprove.yml               * pullapprove config file
  ├── .sass-lint.yml                 * sass linting configuration file
  ├── .travis.yml                    * travis ci configuration file
+ ├── bower.json                     * contains bower dependencies
  ├── CONTRIBUTING.md                * project contributing guidelines
+ ├── docker-compose.yml             * docker compose file
+ ├── Dockerfile                     * docker config file
  ├── gulpfile.js                    * main buld configuration file. contains all the gulp tasks.
- ├── index.html                     * entry HTML file.
  ├── LICENSE.md                     * licensing information
  ├── package.json                   * contains all the npm scripts for building, running, deploying etc. and contains all the dependencies
  └── README.md                      * Readme file for the repository
@@ -134,54 +144,11 @@ The dev server will be opened in a new tab and usually on http://localhost:3000 
 ### server
 
 ```bash
+# development
 npm start
-```
 
-### Other commands
-
-#### build files
-
-```bash
-# all
-npm run build
-# javascript
-npm run build:js
-# sass
-npm run build:sass
-```
-
-#### copy the libraries you want to have on the runtime from `node_modules` to vendor folder
-
-```bash
-npm run vendor
-```
-
-#### linting
-
-```bash
-# all
-npm run lint
-# javascript
-npm run lint:js
-# sass
-npm run lint:sass
-```
-
-#### minify
-
-```bash
-# all
-npm run minify
-# javascript
-npm run minify:js
-# css
-npm run minify:css
-```
-
-#### watch for code quality(linting) and run the dev server
-
-```bash
-npm run watch:dev
+# production
+npm run server:prod
 ```
 
 # Configuration
@@ -190,54 +157,74 @@ The `gulp` tasks are defined inside the `gulpfile.js` file found on the root of 
 
 ## Add third-party dependencies
 
-To use any third party libraries other than the included `bootstrap`, `font-awesome` and `jquery` libs, go to the `gulpfile.js` and scroll down to the `vendor` gulp task and link your dependency.
+To use any third party libraries other than the included `bootstrap`, `font-awesome` and `jquery` libs, find the package you want in the [bower package repository](https://bower.io/search/) and use the following command to add it to your project.
+
+```bash
+bower install $package --save
+```
 
 Take a look at the bellow example:
 
-Lets say that you want to add Animate CSS to your project.
-
-First install [animate.css](https://www.npmjs.com/package/animate.css) from npm registry and save it as a dependency in your project.
+Lets say that you want to add `moment.js` to your project. Just run the command bellow.
 
 ```bash
-npm install animate.css --save
+bower install moment --save
 ```
-
-After successfully adding the dependeny, go to the `gulpfile.js` and append the following block of code inside the `vendor` task. This will create a folder named `animate-css` inside the vendor folder and copy all the files with the `.css` extension from the node_module.
-
-```js
-
-gulp.task('vendor', function() {
-
-  ......
-
-  // Animate CSS
-  gulp.src([
-    './node_modules/animate.css/*.css'
-  ])
-  .pipe(gulp.dest('./vendor/animate-css'));
-
-});
-
-```
-
-Then, simply link the CSS file under the `<header>` tag in the `index.html`.
-
-```html
-<link href="vendor/animate-css/animate.min.css" rel="stylesheet">
-```
+NOTE: Some packages won't work as expected and you might have to do overrides in the `bower.json` file.
 
 # Styling
 
-The `styles.scss` file inside the `scss` directory is the main stylesheet for the project and will be compiled and minified into an external `.css` and is embedded in the `index.html` file.
+The `styles.scss` file inside the `sass` directory is the main stylesheet for the project and will be compiled and minified into an external `.css` and is embedded in the `index.html` file.
 If you want to add your own stylesheet, we recommend that you place it under the `scss/partials` folder and import it in the `styles.scss` file.
 
 For example if you want to include the styles for a slider:
 1) Create a `_slider.scss` partial file in the `scss/partials` directory.
 3) In `styles.scss` add `@import 'partials/slider.scss';`
 
+# Testing
+
+Execute the following command to run your unit tests.
+
+```bash
+npm run test
+```
+
+# Linting
+
+Execute the following commands to generate linting for styles and scripts.
+
+```bash
+# all
+npm run lint
+
+# javascript
+npm run lint:scripts
+
+# sass
+npm run lint:styles
+```
+
 # Deployment
 
-## Netlify
+## Building the app
+
+### For Development
+
+Execute the following command to build your files in the development mode. A new folder called `.temp` will be created and the artifacts will be saved there.
+
+```bash
+npm run build:dev
+```
+
+### For Production
+
+Execute the following command to build your files in the production mode. A new folder called `dist` will be created and the artifacts will be saved there.
+
+```bash
+npm run build:prod
+```
+
+## Deploy to Netlify
 
 Deploy to [Netlify](https://www.netlify.com/) using this template with one single click. It has an awesome free plan and a nifty [CLI](https://github.com/netlify/netlify-cli) which makes the deployment process much easier.
 
@@ -249,10 +236,11 @@ Click [here](https://apareciumlabs-gulp-static-seed.netlify.com/) to see the dep
 # Built With
 
 <a href="https://www.npmjs.com/"><img src="./docs/readme-resources/npm.svg" alt="npm" height="20" /></a>&nbsp;&nbsp;
+<a href="https://bower.io/"><img src="./docs/readme-resources/bower.svg" alt="bower" height="30" /></a>&nbsp;&nbsp;
 <a href="https://sass-lang.com/"><img src="./docs/readme-resources/sass.svg" alt="sass" height="30" /></a>&nbsp;&nbsp;
 <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/"><img  src="./docs/readme-resources/boostrap.svg" alt="bootstrap" height="30" /></a>&nbsp;&nbsp;
 <a href="https://gulpjs.com/"><img style="display:inline-block;margin: 5px 10px" src="./docs/readme-resources/gulp.svg" alt="gulp" height="30" /></a>
-<a href="https://jquery.com/"><img style="display:inline-block;margin: 5px 10px" src="./docs/readme-resources/jquery.svg" alt="jquery" height="30" /></a>&nbsp;&nbsp;
+<a href="https://jquery.com/"><img style="display:inline-block;margin: 5px 10px" src="./docs/readme-resources/jquery.svg" alt="jquery" height="20" /></a>&nbsp;&nbsp;
 
 # Contributing
 
