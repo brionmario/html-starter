@@ -64,13 +64,13 @@ Must be one of the following:
 ### Scope
 The scope should be the name of the component affected.
 
-Example `<scope>` values:
-
-* **js**
+Follow these `<scope>` values:
+* **scripts**
 * **assets**
-* **scss**
+* **styles**
 * **vendor**
-* **lint**
+* **tests**
+* **config**
 
 There are currently a few exceptions to the "use package name" rule:
 
@@ -126,6 +126,10 @@ Please follow the following convention when creating new branches.
       <td>hotfix</td>
       <td>Quick fixes to the codebase</td>
     </tr>
+    <tr>
+      <td>release</td>
+      <td>Code-base releases</td>
+    </tr>
   </tbody>
 </table>
 
@@ -134,7 +138,8 @@ Always use dashes to separate words, and keep it short.
 
 ##### Examples
 ```
-feat/log-management
+feature/component-architecture
 hotfix/upload-size
 fix/incorrect-upload-progress
+release/1.0.x
 ```
