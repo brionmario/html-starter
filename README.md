@@ -183,7 +183,7 @@ For example if you want to include the styles for a slider:
 
 # Testing
 
-Execute the following command to run your unit tests.
+Execute the following command to run your unit tests. We use [codecov](https://codecov.io/) package to generate test coverage reports and the generated reports can be found in the `coverage` folder.
 
 ```bash
 npm run test
