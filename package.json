@@ -52,6 +52,7 @@
     "lint:scripts": "gulp scripts:lint; exit 0",
     "lint:styles": "gulp styles:lint",
     "lint": "npm run lint:scripts && npm run lint:styles",
+    "semver": "npm version $(semver $npm_package_version -i $release --preid $preid)",
     "server:dev": "npm run build:dev && gulp serve:dev",
     "server:prod": "npm run build:prod && http-server dist -a 192.168.8.101 -o",
     "server": "npm run server:dev",
@@ -92,5 +93,8 @@
     "jest": "^23.5.0",
     "main-bower-files": "^2.13.1",
     "wiredep": "^4.0.0"
+  },
+  "dependencies": {
+    "semver": "^5.5.1"
   }
 }
