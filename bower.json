@@ -15,7 +15,7 @@
     "apareciumlabs",
     "seed"
   ],
-  "homepage": "https://github.com/brionmario/gulp-static-seed",
+  "homepage": "https://github.com/apareciumlabs/gulp-static-seed",
   "private": true,
   "ignore": [
     "**/.*",
