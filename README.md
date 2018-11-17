@@ -7,23 +7,23 @@
 
 <!-- Badges -->
 <p align="center">
-  <a href="https://travis-ci.org/brionmario/gulp-static-seed">
-    <img src="https://travis-ci.org/brionmario/gulp-static-seed.svg?branch=master" alt="Build Status" height="18">
+  <a href="https://travis-ci.org/apareciumlabs/gulp-static-seed">
+    <img src="https://travis-ci.org/apareciumlabs/gulp-static-seed.svg?branch=master" alt="Build Status" height="18">
   </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" height="18">
   </a>
-  <a href="https://david-dm.org/brionmario/gulp-static-seed">
-    <img src="https://david-dm.org/brionmario/gulp-static-seed/status.svg" alt="dependencies Status" height="18">
+  <a href="https://david-dm.org/apareciumlabs/gulp-static-seed">
+    <img src="https://david-dm.org/apareciumlabs/gulp-static-seed/status.svg" alt="dependencies Status" height="18">
   </a>
-  <a href="https://david-dm.org/brionmario/gulp-static-seed?type=dev">
-    <img src="https://david-dm.org/brionmario/gulp-static-seed/dev-status.svg" alt="devDependencies Status" height="18">
+  <a href="https://david-dm.org/apareciumlabs/gulp-static-seed?type=dev">
+    <img src="https://david-dm.org/apareciumlabs/gulp-static-seed/dev-status.svg" alt="devDependencies Status" height="18">
    </a>
   <a href="LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" height="18">
   </a>
-  <a href="https://codecov.io/gh/brionmario/gulp-static-seed">
-  <img src="https://codecov.io/gh/brionmario/gulp-static-seed/branch/master/graph/badge.svg" />
+  <a href="https://codecov.io/gh/apareciumlabs/gulp-static-seed">
+  <img src="https://codecov.io/gh/apareciumlabs/gulp-static-seed/branch/master/graph/badge.svg" />
 </a>
 </p>
 
@@ -44,7 +44,7 @@ This repository could be used by anyone who's looking for a quick starter kit fo
 ```bash
 # clone our repository
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/brionmario/gulp-static-seed.git
+git clone --depth 1 https://github.com/apareciumlabs/gulp-static-seed.git
 
 # change the directory
 cd gulp-static-seed
@@ -231,7 +231,7 @@ Deploy to [Netlify](https://www.netlify.com/) using this template with one singl
 Click [here](https://apareciumlabs-gulp-static-seed.netlify.com/) to see the deployed app.
 
 <!-- Markdown snippet -->
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/brionmario/gulp-static-seed)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/apareciumlabs/gulp-static-seed)
 
 # Built With
 
@@ -250,7 +250,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contributing guidelines and t
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/25959096?v=4" width="80px;"/><br /><sub><b>Brion Mario</b></sub>](http://www.brionmario.com/)<br />[💻](https://github.com/brionmario/gulp-static-seed/commits?author=brionmario "Code") [📖](https://github.com/brionmario/gulp-static-seed/commits?author=brionmario "Documentation") [🐛](https://github.com/brionmario/gulp-static-seed/issues?q=author%3Abrionmario "Bug reports") [⚠️](https://github.com/brionmario/gulp-static-seed/commits?author=brionmario "Tests") |
+| [<img src="https://avatars3.githubusercontent.com/u/25959096?v=4" width="80px;"/><br /><sub><b>Brion Mario</b></sub>](http://www.brionmario.com/)<br />[💻](https://github.com/apareciumlabs/gulp-static-seed/commits?author=brionmario "Code") [📖](https://github.com/apareciumlabs/gulp-static-seed/commits?author=brionmario "Documentation") [🐛](https://github.com/apareciumlabs/gulp-static-seed/issues?q=author%3Abrionmario "Bug reports") [⚠️](https://github.com/apareciumlabs/gulp-static-seed/commits?author=brionmario "Tests") |
 | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
