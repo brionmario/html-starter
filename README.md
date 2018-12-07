@@ -1,5 +1,5 @@
 <p align="center">
-    <img style="display:block;text-align:center" src="./docs/gulp-statics-seed.svg" alt="logo-text" width="600" />
+    <img style="display:block;text-align:center" src="./docs/readme-resources/gulp-statics-seed.svg" alt="logo-text" width="600" />
     <br/>
     <h1 align="center">Gulp Static Seed</h1>
     <p align="center" style="font-size: 1.2rem;">A Gulp starter kit for HTML5 static website development with a congenial build process and an optimized SASS workflow</p>
@@ -35,11 +35,16 @@ This repository could be used by anyone who's looking for a quick starter kit fo
 * Ability to use your favorite bower packages.
 * Organized easy to use folder structure for beginners.
 
+# Quick Links
+
+[Demo](https://apareciumlabs-gulp-static-seed.netlify.com) |
+|---|
+
 # Quick start
 
-> The generated project have dependencies that require `node` together with `npm`.
+> The generated project have dependencies that require `node` together with `npm` & `bower`.
 
-**Make sure you have Node version >= 8.0 and (NPM >= 5 or [Yarn](https://yarnpkg.com) )**
+**Make sure you have [Node](https://nodejs.org/en/download/) version >= 8.0, [npm](https://www.npmjs.com/) >= 5 or [Yarn](https://yarnpkg.com) and [Bower](https://bower.io/) >= 1.8**
 
 ```bash
 # clone our repository
@@ -48,6 +53,9 @@ git clone --depth 1 https://github.com/apareciumlabs/gulp-static-seed.git
 
 # change the directory
 cd gulp-static-seed
+
+# install the bower dependencies
+bower install
 
 # install the dependencies with npm
 npm install
@@ -119,21 +127,26 @@ gulp-static-seed/
 
 What you need to run this app:
 
-* The generated project have dependencies that require `node` together with `npm`.
-* Ensure you're running the latest stable versions Node and NPM.
+* The generated project have dependencies that require `node` together with `npm` & `bower`.
+* Ensure you're running the latest stable versions Node, NPM and Bower.
 
 >Make sure you have `Node` and `NPM` installed by running simple commands on the command line to see what version of each is installed.
 
 * Node - Type `node -v` on the terminal.
 * NPM -  Type `npm -v` on the terminal.
+* Bower -  Type `bower -v` on the terminal.
 
 If you do not have them installed, click [here](https://nodejs.org/en/download/) and grab the latest stable version of `node` and `npm` will be automatically installed along with it. Or if you have `brew` already installed in your local machine, execute `brew install node` command to get `node`.
 
+If you have npm installed, It's really easy to grab the latest version of Bower by executing `npm install -g bower` which will install it globally.
+
 Though the project is built on top of gulp, we've created npm scripts to run gulp tasks. So you don't have to install gulp or gulp CLI globally on your working machine.
+
 ## Setting Up
 
 * `clone` the repository
 * `cd gulp-static-seed` to change the directory
+* `bower install` to install the bower dependencies
 * `npm install` to install the dependencies with npm
 
 ## Running the app
@@ -179,7 +192,7 @@ If you want to add your own stylesheet, we recommend that you place it under the
 
 For example if you want to include the styles for a slider:
 1) Create a `_slider.scss` partial file in the `scss/partials` directory.
-3) In `styles.scss` add `@import 'partials/slider.scss';`
+2) In `styles.scss` add `@import 'partials/slider.scss';`
 
 # Testing
 
