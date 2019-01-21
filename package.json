@@ -60,7 +60,8 @@
     "test": "jest && codecov",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "watch:dev": "gulp watch",
-    "watch": "npm run watch:dev"
+    "watch": "npm run watch:dev",
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
