@@ -54,7 +54,7 @@
     "lint:styles": "npm run gulp styles:lint",
     "lint": "npm run lint:scripts && npm run lint:styles",
     "semver": "npm version $(semver $npm_package_version -i $release --preid $preid)",
-    "server:dev": "npm run build:dev && npm run gulp serve:dev",
+    "server:dev": "npm run build:dev && npm run gulp serve --env=development",
     "server:prod": "npm run build:prod && http-server dist -a 192.168.8.101 -o",
     "server": "npm run server:dev",
     "start": "npm run server",
