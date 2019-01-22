@@ -20,6 +20,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const wiredep = require('wiredep');
 const urlAdjuster = require('gulp-css-url-adjuster');
 const bowerlibs = require('main-bower-files');
+const CONFIG = require('./config/app.config.json');
 
 /**
  * Browser Support declaration
@@ -57,61 +58,6 @@ const banner = [
   ' */\n\n',
   ''
 ].join('');
-
-const CONFIG = {
-  filenames: {
-    dev: {
-      scripts: 'main.js',
-      vendorJS: 'vendor.js',
-      vendorCSS: 'vendor.css',
-      styles: 'styles.css'
-    },
-    prod: {
-      scripts: 'main.bundle.js',
-      vendorJS: 'vendor.bundle.js',
-      vendorCSS: 'vendor.bundle.css',
-      styles: 'styles.bundle.css'
-    }
-  },
-  paths: {
-    dev: {
-      root: '.temp',
-      scripts: '.temp/js',
-      styles: '.temp/css',
-      assets: '.temp/assets',
-      fonts: '.temp/assets/fonts'
-    },
-    src: {
-      root: 'src',
-      scripts: 'src/scripts',
-      styles: 'src/sass',
-      libs: 'src/libs',
-      index: 'src/index.html',
-      assets: 'src/assets',
-      fonts: 'src/assets/fonts',
-      vendor: 'src/bower_components'
-    },
-    prod: {
-      root: 'dist',
-      scripts: 'dist/js',
-      styles: 'dist/css',
-      assets: 'dist/assets',
-      fonts: 'dist/assets/fonts'
-    }
-  },
-  settings: {
-    dev: {
-      proxy: '127.0.0.1:8010',
-      tunnel: 8010,
-      port: 4200
-    },
-    prod: {
-      proxy: '127.0.0.1:8010',
-      tunnel: 8010,
-      port: 3000
-    }
-  }
-};
 
 gulp.task('scripts:build', () => {
   return gulp
