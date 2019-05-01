@@ -1,0 +1,42 @@
+{
+  "filenames": {
+    "dev": {
+      "scripts": "main.js",
+      "vendorJS": "vendor.js",
+      "vendorCSS": "vendor.css",
+      "styles": "styles.css"
+    },
+    "prod": {
+      "scripts": "main.bundle.js",
+      "vendorJS": "vendor.bundle.js",
+      "vendorCSS": "vendor.bundle.css",
+      "styles": "styles.bundle.css"
+    }
+  },
+  "paths": {
+    "dev": {
+      "root": ".temp",
+      "scripts": ".temp/js",
+      "styles": ".temp/css",
+      "assets": ".temp/assets",
+      "fonts": ".temp/assets/fonts"
+    },
+    "src": {
+      "root": "src",
+      "scripts": "src/scripts",
+      "styles": "src/sass",
+      "libs": "src/libs",
+      "index": "src/index.html",
+      "assets": "src/assets",
+      "fonts": "src/assets/fonts",
+      "vendor": "src/bower_components"
+    },
+    "prod": {
+      "root": "dist",
+      "scripts": "dist/js",
+      "styles": "dist/css",
+      "assets": "dist/assets",
+      "fonts": "dist/assets/fonts"
+    }
+  }
+}

@@ -1,17 +1,18 @@
-FROM node:9-alphine
+FROM node:10
 
 RUN mkdir /app
 WORKDIR /app
 
-COPY package.json /app
+COPY package*.json /app
 COPY bower.json /app
 
+RUN cd /app
+
+RUN npm install bower --global
 RUN npm install
-RUN npm install bower -g
-RUN bower install
 
 COPY . /app
 
-EXPOSE 4000
+EXPOSE 3000
 
 CMD [ "npm", "start" ]

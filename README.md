@@ -29,16 +29,17 @@
 
 This repository could be used by anyone who's looking for a quick starter kit for static website development. This boilerplate uses [Gulp](https://gulpjs.com/) for building and automating the workflow. Following are some key features we've included for you.
 
-* Usage of [Sass: Syntactically Awesome Style Sheets](https://sass-lang.com/) over CSS.
-* Ready to go build system using Gulp.
-* Simplified development process with npm scripts.
-* Ability to use your favorite bower packages.
-* Organized easy to use folder structure for beginners.
+- The use of [Sass: Syntactically Awesome Style Sheets](https://sass-lang.com/) over CSS.
+- Ready to go build system using Gulp.
+- Simplified development process with npm scripts.
+- Ability to use your favorite bower packages.
+- Organized easy to use folder structure for beginners.
 
 # Quick Links
 
-[Demo](https://apareciumlabs-gulp-static-seed.netlify.com) |
-|---|
+| [Demo](https://apareciumlabs-gulp-static-seed.netlify.com) |
+| ---------------------------------------------------------- |
+
 
 # Quick start
 
@@ -69,20 +70,20 @@ Once the dev server is fired up, it'll automatically open up a new tab. If not, 
 
 # Table of Contents
 
-* [File Structure](#file-structure)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Setting Up](#setting-up)
-  * [Running the app](#running-the-app)
-* [Configuration](#configuration)
-  * [Add third-party dependencies](#add-third-party-dependencies)
-* [Styling](#styling)
-* [Deployment](#deployment)
-  * [Netlify](#netlify)
-* [Built With](#built-with)
-* [Contributing](#contributing)
-* [Contributors](#contributors)
-* [License](#license)
+- [File Structure](#file-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Setting Up](#setting-up)
+  - [Running the app](#running-the-app)
+- [Configuration](#configuration)
+  - [Add third-party dependencies](#add-third-party-dependencies)
+- [Styling](#styling)
+- [Deployment](#deployment)
+  - [Netlify](#netlify)
+- [Built With](#built-with)
+- [Contributing](#contributing)
+- [Contributors](#contributors)
+- [License](#license)
 
 # File Structure
 
@@ -92,11 +93,11 @@ gulp-static-seed/
  ├── node_modules/                  * contains dependencies pulled from npm
  ├── src/                           * styles folder
  │   ├── assets/                    * static assets such as images, icons, fonts goes here
- │   ├── scss/                      * styles folder
+ │   ├── sass/                      * styles folder
  │   │   ├── partials/              * place all the sass partial stylesheets in this folder
  │   │   └── styles.scss            * the main stylesheet for the project which gets compiled to CSS
  │   ├── scripts/                   * custom javascript script files
- │   ├── vendor/                    * third party bower libraries will be copied here
+ │   ├── bower_components/          * third party bower libraries will be copied here
  │   └── index.html                 * entry HTML file.
  ├── .all-contributorsrc            * contains info ablout repo contributors
  ├── .bowerrc                       * bower config file
@@ -127,14 +128,14 @@ gulp-static-seed/
 
 What you need to run this app:
 
-* The generated project have dependencies that require `node` together with `npm` & `bower`.
-* Ensure you're running the latest stable versions Node, NPM and Bower.
+- The generated project have dependencies that require `node` together with `npm` & `bower`.
+- Ensure you're running the latest stable versions Node, NPM and Bower.
 
->Make sure you have `Node` and `NPM` installed by running simple commands on the command line to see what version of each is installed.
+> Make sure you have `Node` and `NPM` installed by running simple commands on the command line to see what version of each is installed.
 
-* Node - Type `node -v` on the terminal.
-* NPM -  Type `npm -v` on the terminal.
-* Bower -  Type `bower -v` on the terminal.
+- Node - Type `node -v` on the terminal.
+- NPM - Type `npm -v` on the terminal.
+- Bower - Type `bower -v` on the terminal.
 
 If you do not have them installed, click [here](https://nodejs.org/en/download/) and grab the latest stable version of `node` and `npm` will be automatically installed along with it. Or if you have `brew` already installed in your local machine, execute `brew install node` command to get `node`.
 
@@ -144,10 +145,9 @@ Though the project is built on top of gulp, we've created npm scripts to run gul
 
 ## Setting Up
 
-* `clone` the repository
-* `cd gulp-static-seed` to change the directory
-* `bower install` to install the bower dependencies
-* `npm install` to install the dependencies with npm
+- `clone` the repository
+- `cd gulp-static-seed` to change the directory
+- `npm install` to install the dependencies with npm (installs bower dependencies as well using a post install script)
 
 ## Running the app
 
@@ -183,6 +183,7 @@ Lets say that you want to add `moment.js` to your project. Just run the command 
 ```bash
 bower install moment --save
 ```
+
 NOTE: Some packages won't work as expected and you might have to do overrides in the `bower.json` file.
 
 # Styling
@@ -191,8 +192,9 @@ The `styles.scss` file inside the `sass` directory is the main stylesheet for th
 If you want to add your own stylesheet, we recommend that you place it under the `scss/partials` folder and import it in the `styles.scss` file.
 
 For example if you want to include the styles for a slider:
-1) Create a `_slider.scss` partial file in the `scss/partials` directory.
-2) In `styles.scss` add `@import 'partials/slider.scss';`
+
+1. Create a `_slider.scss` partial file in the `scss/partials` directory.
+2. In `styles.scss` add `@import 'partials/slider.scss';`
 
 # Testing
 
@@ -234,7 +236,7 @@ npm run build:dev
 Execute the following command to build your files in the production mode. A new folder called `dist` will be created and the artifacts will be saved there.
 
 ```bash
-npm run build:prod
+npm run build
 ```
 
 ## Deploy to Netlify
@@ -244,6 +246,7 @@ Deploy to [Netlify](https://www.netlify.com/) using this template with one singl
 Click [here](https://apareciumlabs-gulp-static-seed.netlify.com/) to see the deployed app.
 
 <!-- Markdown snippet -->
+
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/apareciumlabs/gulp-static-seed)
 
 # Built With
@@ -261,10 +264,13 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contributing guidelines and t
 
 # Contributors
 
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 | [<img src="https://avatars3.githubusercontent.com/u/25959096?v=4" width="80px;"/><br /><sub><b>Brion Mario</b></sub>](http://www.brionmario.com/)<br />[💻](https://github.com/apareciumlabs/gulp-static-seed/commits?author=brionmario "Code") [📖](https://github.com/apareciumlabs/gulp-static-seed/commits?author=brionmario "Documentation") [🐛](https://github.com/apareciumlabs/gulp-static-seed/issues?q=author%3Abrionmario "Bug reports") [⚠️](https://github.com/apareciumlabs/gulp-static-seed/commits?author=brionmario "Tests") |
 | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
