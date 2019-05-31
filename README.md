@@ -7,8 +7,8 @@
 
 <!-- Badges -->
 <p align="center">
-  <a href="https://travis-ci.org/apareciumlabs/gulp-static-seed">
-    <img src="https://travis-ci.org/apareciumlabs/gulp-static-seed.svg?branch=master" alt="Build Status" height="18">
+  <a href="https://travis-ci.org/brionmario/gulp-static-seed">
+    <img src="https://travis-ci.org/brionmario/gulp-static-seed.svg?branch=master" alt="Build Status" height="18">
   </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" height="18">
