@@ -1,7 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-  - "node"
+  - 'node'
 cache:
   directories:
     - node_modules
@@ -10,11 +10,9 @@ matrix:
 before_install:
   - npm install -g npm@5
   - npm install -g codecov
-  - npm install -g bower
-  - bower install
 install:
   - npm install
 script:
   - codecov
   - npm run test
-  - npm run build:prod
+  - npm run build
