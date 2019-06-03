@@ -20,7 +20,6 @@ const sourcemaps = require('gulp-sourcemaps');
 const wiredep = require('wiredep');
 const urlAdjuster = require('gulp-css-url-adjuster');
 const bowerlibs = require('main-bower-files');
-const CONFIG = require('./config/app.config.json');
 
 /**
  * Browser Support declaration
@@ -59,6 +58,51 @@ const banner = [
   ''
 ].join('');
 
+const CONFIG = {
+  filenames: {
+    dev: {
+      scripts: 'main.js',
+      bowerJS: 'vendor.js',
+      bowerCSS: 'vendor.css',
+      styles: 'styles.css'
+    },
+    prod: {
+      scripts: 'main.bundle.js',
+      bowerJS: 'vendor.bundle.js',
+      bowerCSS: 'vendor.bundle.css',
+      styles: 'styles.bundle.css'
+    }
+  },
+  paths: {
+    dev: {
+      root: '.temp',
+      scripts: '.temp/js',
+      styles: '.temp/css',
+      libs: '.temp/libs',
+      assets: '.temp/assets',
+      fonts: '.temp/assets/fonts'
+    },
+    src: {
+      root: 'src',
+      scripts: 'src/scripts',
+      styles: 'src/sass',
+      libs: 'src/libs',
+      index: 'src/index.html',
+      assets: 'src/assets',
+      fonts: 'src/assets/fonts',
+      bower: 'src/bower_components'
+    },
+    prod: {
+      root: 'dist',
+      scripts: 'dist/js',
+      styles: 'dist/css',
+      libs: 'dist/libs',
+      assets: 'dist/assets',
+      fonts: 'dist/assets/fonts'
+    }
+  }
+};
+
 gulp.task('scripts:build', () => {
   return gulp
     .src([`${CONFIG.paths.src.scripts}/**/*.js`, `!${CONFIG.paths.src.scripts}/**/*.test.js`])
@@ -78,15 +122,15 @@ gulp.task('scripts:build', () => {
     .pipe(
       gutil.env.env === 'production'
         ? rename({
-            suffix: '.min'
-          })
+          suffix: '.min'
+        })
         : gutil.noop()
     )
     .pipe(
       gutil.env.env === 'production'
         ? header(banner, {
-            pkg: pkg
-          })
+          pkg: pkg
+        })
         : gutil.noop()
     )
     .pipe(
@@ -128,16 +172,16 @@ gulp.task('styles:build', () => {
     .pipe(
       gutil.env.env === 'production'
         ? header(banner, {
-            pkg: pkg
-          })
+          pkg: pkg
+        })
         : gutil.noop()
     )
     .pipe(gutil.env.env === 'production' ? cleanCSS() : gutil.noop())
     .pipe(
       gutil.env.env === 'production'
         ? rename({
-            suffix: '.min'
-          })
+          suffix: '.min'
+        })
         : gutil.noop()
     )
     .pipe(
@@ -197,12 +241,12 @@ gulp.task('move:libs', () => {
     .src([`${CONFIG.paths.src.libs}/**/*`], { base: CONFIG.paths.src.root })
     .pipe(
       gutil.env.env === 'production'
-        ? gulp.dest(CONFIG.paths.prod.root)
-        : gulp.dest(CONFIG.paths.dev.root)
+        ? gulp.dest(CONFIG.paths.prod.libs)
+        : gulp.dest(CONFIG.paths.dev.libs)
     );
 });
 
-gulp.task('move:vendor:fonts', () => {
+gulp.task('move:bower:fonts', () => {
   return gulp
     .src(bowerlibs('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe(
@@ -212,14 +256,14 @@ gulp.task('move:vendor:fonts', () => {
     );
 });
 
-gulp.task('bundle:vendor', () => {
+gulp.task('bundle:bower', () => {
   let target = gulp.src(
     [
       CONFIG.paths.src.index,
       `${CONFIG.paths.src.root}/**/*.html`,
       `${CONFIG.paths.src.root}/**/*.jade`,
       `${CONFIG.paths.src.root}/**/*.php`,
-      `!${CONFIG.paths.src.vendor}/**/*`,
+      `!${CONFIG.paths.src.bower}/**/*`,
       `!${CONFIG.paths.src.libs}/**/*`
     ],
     { base: CONFIG.paths.src.root }
@@ -235,8 +279,8 @@ gulp.task('bundle:vendor', () => {
           .pipe(
             concat(
               gutil.env.env === 'production'
-                ? CONFIG.filenames.prod.vendorJS
-                : CONFIG.filenames.dev.vendorJS
+                ? CONFIG.filenames.prod.bowerJS
+                : CONFIG.filenames.dev.bowerJS
             )
           )
           .pipe(
@@ -252,8 +296,8 @@ gulp.task('bundle:vendor', () => {
           .pipe(
             concat(
               gutil.env.env === 'production'
-                ? CONFIG.filenames.prod.vendorCSS
-                : CONFIG.filenames.dev.vendorCSS
+                ? CONFIG.filenames.prod.bowerCSS
+                : CONFIG.filenames.dev.bowerCSS
             )
           )
           .pipe(
@@ -276,7 +320,7 @@ gulp.task('inject', () => {
       `${CONFIG.paths.src.root}/**/*.html`,
       `${CONFIG.paths.src.root}/**/*.jade`,
       `${CONFIG.paths.src.root}/**/*.php`,
-      `!${CONFIG.paths.src.vendor}/**/*`,
+      `!${CONFIG.paths.src.bower}/**/*`,
       `!${CONFIG.paths.src.libs}/**/*`
     ],
     { base: CONFIG.paths.src.root }
@@ -316,8 +360,8 @@ gulp.task('inject', () => {
     .pipe(
       gutil.env.env === 'production'
         ? htmlmin({
-            collapseWhitespace: true
-          })
+          collapseWhitespace: true
+        })
         : gutil.noop()
     )
     .pipe(
@@ -336,9 +380,9 @@ gulp.task(
   'build',
   gulp.series(
     'move:assets',
-    'move:vendor:fonts',
+    'move:bower:fonts',
     gulp.parallel('scripts:build', 'styles:build'),
-    'bundle:vendor',
+    'bundle:bower',
     'inject'
   ),
   callback => {
