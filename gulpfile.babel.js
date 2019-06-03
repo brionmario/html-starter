@@ -1,25 +1,24 @@
-const gulp = require('gulp');
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
-const inject = require('gulp-inject');
-const gutil = require('gulp-util');
-const imagemin = require('gulp-imagemin');
-const autoprefixer = require('gulp-autoprefixer');
-const del = require('del');
-const htmlmin = require('gulp-htmlmin');
-const sass = require('gulp-sass');
-const header = require('gulp-header');
-const cleanCSS = require('gulp-clean-css');
-const rename = require('gulp-rename');
-const sassLint = require('gulp-sass-lint');
-const eslint = require('gulp-eslint');
-const pkg = require('./package.json');
-const browserSync = require('browser-sync');
-const uglify = require('gulp-uglify');
-const sourcemaps = require('gulp-sourcemaps');
-const wiredep = require('wiredep');
-const urlAdjuster = require('gulp-css-url-adjuster');
-const bowerlibs = require('main-bower-files');
+import gulp from 'gulp';
+import babel from 'gulp-babel';
+import concat from 'gulp-concat';
+import inject from 'gulp-inject';
+import gutil from 'gulp-util';
+import imagemin from 'gulp-imagemin';
+import autoprefixer from 'gulp-autoprefixer';
+import del from 'del';
+import sass from 'gulp-sass';
+import header from 'gulp-header';
+import cleanCSS from 'gulp-clean-css';
+import rename from 'gulp-rename';
+import sassLint from 'gulp-sass-lint';
+import eslint from 'gulp-eslint';
+import pkg from './package.json';
+import browserSync from 'browser-sync';
+import uglify from 'gulp-uglify';
+import sourcemaps from 'gulp-sourcemaps';
+import wiredep from 'wiredep';
+import urlAdjuster from 'gulp-css-url-adjuster';
+import bowerlibs from 'main-bower-files';
 
 /**
  * Browser Support declaration
@@ -103,6 +102,10 @@ const CONFIG = {
   }
 };
 
+/**
+ * Gulp script to build the javascript files in the
+ * `src/scripts` folder
+ */
 gulp.task('scripts:build', () => {
   return gulp
     .src([`${CONFIG.paths.src.scripts}/**/*.js`, `!${CONFIG.paths.src.scripts}/**/*.test.js`])
@@ -140,6 +143,9 @@ gulp.task('scripts:build', () => {
     );
 });
 
+/**
+ * Gulp script to lint javascript
+ */
 gulp.task('scripts:lint', () => {
   return gulp
     .src(`${CONFIG.paths.src.scripts}/**/*.js`)
@@ -147,6 +153,9 @@ gulp.task('scripts:lint', () => {
     .pipe(eslint.format());
 });
 
+/**
+ * Gulp script which builds the Sass files
+ */
 gulp.task('styles:build', () => {
   return gulp
     .src(`${CONFIG.paths.src.styles}/**/*.s+(a|c)ss`)
@@ -192,6 +201,9 @@ gulp.task('styles:build', () => {
     .pipe(browserSync.stream());
 });
 
+/**
+ * Gulp script to lint Sass files
+ */
 gulp.task('styles:lint', () => {
   return gulp
     .src(`${CONFIG.paths.src.root}/**/*.s+(a|c)ss`)
@@ -212,6 +224,9 @@ gulp.task('styles:lint', () => {
     .pipe(sassLint.format());
 });
 
+/**
+ * Gulp script to clean the target folders i.e. `temp` & `dist`
+ */
 gulp.task('clean', () => {
   if (gutil.env.env === 'production') {
     return del(CONFIG.paths.prod.root);
@@ -225,6 +240,9 @@ gulp.task('clean', () => {
   return del([CONFIG.paths.dev.root, CONFIG.paths.prod.root]);
 });
 
+/**
+ * Gulp script to move the static assets to target folders
+ */
 gulp.task('move:assets', () => {
   return gulp
     .src([`${CONFIG.paths.src.assets}/**/*`], { base: CONFIG.paths.src.root })
@@ -236,6 +254,9 @@ gulp.task('move:assets', () => {
     );
 });
 
+/**
+ * Gulp script to move the static libs to target folders
+ */
 gulp.task('move:libs', () => {
   return gulp
     .src([`${CONFIG.paths.src.libs}/**/*`], { base: CONFIG.paths.src.root })
@@ -246,6 +267,9 @@ gulp.task('move:libs', () => {
     );
 });
 
+/**
+ * Gulp script to move the fonts in bower components to target folders
+ */
 gulp.task('move:bower:fonts', () => {
   return gulp
     .src(bowerlibs('**/*.{eot,svg,ttf,woff,woff2}'))
@@ -256,6 +280,9 @@ gulp.task('move:bower:fonts', () => {
     );
 });
 
+/**
+ * Gulp script to bundle the bower components
+ */
 gulp.task('bundle:bower', () => {
   let target = gulp.src(
     [
@@ -314,6 +341,9 @@ gulp.task('bundle:bower', () => {
     );
 });
 
+/**
+ * Gulp script to inject built scripts and stylesheets to HTML files
+ */
 gulp.task('inject', () => {
   let target = gulp.src(
     [
@@ -359,13 +389,6 @@ gulp.task('inject', () => {
   return target
     .pipe(
       gutil.env.env === 'production'
-        ? htmlmin({
-          collapseWhitespace: true
-        })
-        : gutil.noop()
-    )
-    .pipe(
-      gutil.env.env === 'production'
         ? inject(prodSources, prodInjectionOptions)
         : inject(devSources, devInjectionOptions)
     )
@@ -376,6 +399,9 @@ gulp.task('inject', () => {
     );
 });
 
+/**
+ * Gulp script to build the project
+ */
 gulp.task(
   'build',
   gulp.series(
@@ -390,6 +416,9 @@ gulp.task(
   }
 );
 
+/**
+ * BrowserSync gulp task
+ */
 gulp.task('browserSync', callback => {
   browserSync.init({
     server: {
@@ -399,16 +428,25 @@ gulp.task('browserSync', callback => {
   callback();
 });
 
+/**
+ * Gulp script to watch the stylesheets for changes
+ */
 gulp.task('watch:styles', () => {
   gulp.watch(`${CONFIG.paths.src.styles}/**/*.s+(a|c)ss`, gulp.series('styles:build'));
 });
 
+/**
+ * Gulp script to watch the javascript for changes
+ */
 gulp.task('watch:scripts', () => {
   gulp
     .watch(`${CONFIG.paths.src.scripts}/**/*.js`, gulp.series('scripts:build'))
     .on('change', browserSync.reload);
 });
 
+/**
+ * Gulp script to watch the HTML for changes
+ */
 gulp.task('watch:pages', () => {
   gulp
     .watch(
@@ -422,12 +460,21 @@ gulp.task('watch:pages', () => {
     .on('change', browserSync.reload);
 });
 
+/**
+ * Gulp script to watch the static assets for changes
+ */
 gulp.task('watch:assets', () => {
   gulp
     .watch(`${CONFIG.paths.src.assets}/**/*`, gulp.series('move:assets', 'move:libs'))
     .on('change', browserSync.reload);
 });
 
+/**
+ * Combined Gulp script to watch changes
+ */
 gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts', 'watch:pages', 'watch:assets'));
 
+/**
+ * Gulp script to serve the project
+ */
 gulp.task('serve', gulp.series('browserSync', 'watch'));
