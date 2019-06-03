@@ -225,7 +225,7 @@ npm run lint:styles
 
 ### For Development
 
-Execute the following command to build your files in the development mode. A new folder called `.temp` will be created and the artifacts will be saved there.
+Execute the following command to build your files in the development mode. A new folder called `temp` will be created and the artifacts will be saved there.
 
 ```bash
 npm run build:dev

@@ -75,12 +75,12 @@ const CONFIG = {
   },
   paths: {
     dev: {
-      root: '.temp',
-      scripts: '.temp/js',
-      styles: '.temp/css',
-      libs: '.temp/libs',
-      assets: '.temp/assets',
-      fonts: '.temp/assets/fonts'
+      root: 'temp',
+      scripts: 'temp/js',
+      styles: 'temp/css',
+      libs: 'temp/libs',
+      assets: 'temp/assets',
+      fonts: 'temp/assets/fonts'
     },
     src: {
       root: 'src',
