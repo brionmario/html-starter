@@ -59,7 +59,7 @@
     "postinstall": "bower cache clean && bower install",
     "semver": "npm version $(semver $npm_package_version -i $release --preid $preid)",
     "server:dev": "npm run build:dev && gulp serve --env=development",
-    "server:prod": "npm run build:prod && http-server dist -a 192.168.8.101 -o",
+    "server:prod": "npm run build:prod && http-server ./dist",
     "server": "npm run server:dev",
     "start": "npm run server",
     "test": "jest && codecov",
