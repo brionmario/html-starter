@@ -1,9 +1,9 @@
 # Output
 dist
-.temp
+temp
 
-#Vendor packages
-/src/vendor/
+#Bower  Components
+/src/bower_components/
 
 # Optional eslint cache
 .eslintcache

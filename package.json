@@ -4,9 +4,9 @@
   "version": "1.0.0-alpha.1",
   "private": true,
   "description": "A Gulp starter kit for HTML5 static website development with a congenial build process",
-  "homepage": "https://github.com/apareciumlabs/gulp-static-seed#README.md",
+  "homepage": "https://github.com/brionmario/gulp-static-seed#README.md",
   "bugs": {
-    "url": "https://github.com/apareciumlabs/gulp-static-seed/issues",
+    "url": "https://github.com/brionmario/gulp-static-seed/issues",
     "email": "opensource@apareciumalabs.com"
   },
   "license": "MIT",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/apareciumlabs/gulp-static-seed"
+    "url": "https://github.com/brionmario/gulp-static-seed"
   },
   "keywords": [
     "gulp",
@@ -37,24 +37,29 @@
   ],
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "/vendor/",
+      "/src/bower_components/"
+    ]
   },
   "scripts": {
     "build:dev": "npm run clean:temp && gulp build --env=development",
     "build:prod": "npm run clean:dist && gulp build --env=production",
-    "build": "npm run build:dev",
+    "build": "npm run build:prod",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
     "clean:temp": "gulp clean --env=development",
     "clean:dist": "gulp clean --env=production",
     "clean": "gulp clean --env=all",
-    "gulp-dev-server": "gulp browserSync --base=.temp",
+    "gulp-dev-server": "gulp browserSync --base=temp",
     "lint:scripts": "gulp scripts:lint; exit 0",
     "lint:styles": "gulp styles:lint",
     "lint": "npm run lint:scripts && npm run lint:styles",
+    "postinstall": "bower cache clean && bower install",
     "semver": "npm version $(semver $npm_package_version -i $release --preid $preid)",
-    "server:dev": "npm run build:dev && gulp serve:dev",
-    "server:prod": "npm run build:prod && http-server dist -a 192.168.8.101 -o",
+    "server:dev": "npm run build:dev && gulp serve --env=development",
+    "server:prod": "npm run build:prod && http-server ./dist",
     "server": "npm run server:dev",
     "start": "npm run server",
     "test": "jest && codecov",
@@ -62,16 +67,16 @@
     "watch:dev": "gulp watch",
     "watch": "npm run watch:dev"
   },
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
+  "dependencies": {
+    "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.0.0",
-    "all-contributors-cli": "^5.4.0",
+    "@babel/register": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.4",
+    "bower": "^1.8.8",
     "browser-sync": "2.24.5",
     "browserify": "^16.2.2",
-    "codecov": "^3.1.0",
     "del": "^3.0.0",
-    "eslint": "^5.3.0",
-    "eslint-config-airbnb": "^17.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
@@ -90,11 +95,15 @@
     "gulp-uglify": "^3.0.1",
     "gulp-util": "^3.0.8",
     "http-server": "^0.11.1",
-    "jest": "^23.5.0",
     "main-bower-files": "^2.13.1",
+    "semver": "^5.5.1",
     "wiredep": "^4.0.0"
   },
-  "dependencies": {
-    "semver": "^5.5.1"
+  "devDependencies": {
+    "all-contributors-cli": "^5.4.0",
+    "codecov": "^3.1.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "jest": "^23.5.0"
   }
 }
