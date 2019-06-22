@@ -1,8 +1,13 @@
-
 .footer {
   text-align: center;
+  color: $black;
+  background: $white;
   padding: $footer-padding;
-  border-top: $footer-border-top;
+  border: none !important;
+  border-top: $footer-border-top !important;
+  .footer-icons {
+    margin-bottom: unset;
+  }
   .footer-icons > li {
     > a {
       display: inline-block;
@@ -13,32 +18,47 @@
       display: inline-block;
       height: 35px;
       line-height: 33px;
-      transition: all .2s;
+      transition: all 0.2s;
       border-radius: 40px;
       text-align: center;
       width: 35px;
-      &[class*="facebook"] {
+      &[class*='facebook'] {
         color: $facebook-icon-color;
         border-color: $facebook-icon-color;
+        &:hover {
+          color: lighten($facebook-icon-color, 10);
+        }
       }
-      &[class*="twitter"] {
+      &[class*='twitter'] {
         color: $twitter-icon-color;
         border-color: $twitter-icon-color;
+        &:hover {
+          color: lighten($twitter-icon-color, 10);
+        }
       }
-      &[class*="github"] {
+      &[class*='github'] {
         color: $github-icon-color;
         border-color: $github-icon-color;
+        &:hover {
+          color: lighten($github-icon-color, 10);
+        }
       }
     }
   }
   .copyright {
     font-size: $footer-copyright-font-size;
-    img {
-      margin: 0 5px;
-    }
     p {
-      color: $black;
       display: inline-block;
+      margin-bottom: unset;
+      &:first-child {
+        margin-right: 5px;
+      }
+      &:last-child {
+        margin-left: 5px;
+      }
+    }
+    .link {
+      color: $black;
     }
   }
 }

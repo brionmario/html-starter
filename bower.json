@@ -17,9 +17,9 @@
   "private": true,
   "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
-    "jquery": "^3.3.1",
-    "bootstrap": "3.3.4",
-    "font-awesome": "~4.4.0"
+    "font-awesome": "~4.4.0",
+    "jquery": "^3.4.1",
+    "bootstrap": "^4.3.1"
   },
   "overrides": {
     "font-awesome": {
@@ -30,6 +30,9 @@
         "fonts/fontawesome-webfont.ttf",
         "fonts/fontawesome-webfont.svg"
       ]
+    },
+    "bootstrap": {
+      "main": ["dist/css/bootstrap.min.css", "dist/js/bootstrap.min.js"]
     }
   }
 }
