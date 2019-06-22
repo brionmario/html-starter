@@ -116,11 +116,7 @@ gulp.task('scripts:build', () => {
       })
     )
     .pipe(gutil.env.env === 'production' ? gutil.noop() : sourcemaps.write())
-    .pipe(
-      gutil.env.env === 'production'
-        ? concat(CONFIG.filenames.prod.scripts)
-        : concat(CONFIG.filenames.dev.scripts)
-    )
+    .pipe(gutil.env.env === 'production' ? concat(CONFIG.filenames.prod.scripts) : gutil.noop())
     .pipe(gutil.env.env === 'production' ? uglify() : gutil.noop())
     .pipe(
       gutil.env.env === 'production'
