@@ -44,15 +44,15 @@
     ]
   },
   "scripts": {
-    "build:dev": "npm run clean:temp && gulp build --env=development",
+    "build:dev": "npm run clean:dev && gulp build --env=development",
     "build:prod": "npm run clean:dist && gulp build --env=production",
     "build": "npm run build:prod",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "clean:temp": "gulp clean --env=development",
+    "clean:dev": "gulp clean --env=development",
     "clean:dist": "gulp clean --env=production",
     "clean": "gulp clean --env=all",
-    "gulp-dev-server": "gulp browserSync --base=temp",
+    "gulp-dev-server": "gulp browserSync --base=dev",
     "lint:scripts": "gulp scripts:lint; exit 0",
     "lint:styles": "gulp styles:lint",
     "lint": "npm run lint:scripts && npm run lint:styles",
