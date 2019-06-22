@@ -29,6 +29,7 @@
 
 This repository could be used by anyone who's looking for a quick starter kit for static website development. This boilerplate uses [Gulp](https://gulpjs.com/) for building and automating the workflow. Following are some key features we've included for you.
 
+- Supports minification and concatination for production builds.
 - The use of [Sass: Syntactically Awesome Style Sheets](https://sass-lang.com/) over CSS.
 - Ready to go build system using Gulp.
 - Simplified development process with npm scripts.
@@ -254,7 +255,6 @@ Click [here](https://html-seed.herokuapp.com/) to see the deployed app.
 <!-- Markdown snippet -->
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 
 ## Deploy to Netlify
 
