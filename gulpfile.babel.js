@@ -116,11 +116,7 @@ gulp.task('scripts:build', () => {
       })
     )
     .pipe(gutil.env.env === 'production' ? gutil.noop() : sourcemaps.write())
-    .pipe(
-      gutil.env.env === 'production'
-        ? concat(CONFIG.filenames.prod.scripts)
-        : concat(CONFIG.filenames.dev.scripts)
-    )
+    .pipe(gutil.env.env === 'production' ? concat(CONFIG.filenames.prod.scripts) : gutil.noop())
     .pipe(gutil.env.env === 'production' ? uglify() : gutil.noop())
     .pipe(
       gutil.env.env === 'production'
@@ -159,6 +155,7 @@ gulp.task('scripts:lint', () => {
 gulp.task('styles:build', () => {
   return gulp
     .src(`${CONFIG.paths.src.styles}/**/*.s+(a|c)ss`)
+    .pipe(gutil.env.env === 'production' ? gutil.noop() : sourcemaps.init())
     .pipe(
       sass({
         outputStyle: 'nested',
@@ -167,6 +164,7 @@ gulp.task('styles:build', () => {
         onError: console.error.bind(console, 'Sass error:')
       })
     )
+    .pipe(gutil.env.env === 'production' ? gutil.noop() : sourcemaps.write())
     .pipe(autoprefixer({ browsers: AUTO_PREFIX_BROWSERS }))
     .pipe(
       urlAdjuster({
