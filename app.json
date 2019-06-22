@@ -1,8 +1,8 @@
 {
-  "name": "Gulp Static Seed by Aparecium Labs",
-  "description": "A Gulp starter kit for HTML5 static website development with a congenial build process",
-  "repository": "https://github.com/brionmario/gulp-static-seed",
-  "logo": "https://raw.githubusercontent.com/brionmario/gulp-static-seed/master/docs/readme-resources/gulp-statics-seed.svg?sanitize=true",
+  "name": "HTML Seed by Aparecium Labs",
+  "description": "A starter kit for HTML5 static website development with a congenial build process",
+  "repository": "https://github.com/brionmario/html-seed",
+  "logo": "https://raw.githubusercontent.com/brionmario/html-seed/master/docs/readme-resources/html-seed.svg?sanitize=true",
   "keywords": [
     "gulp",
     "css",

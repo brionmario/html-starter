@@ -1,29 +1,29 @@
 <p align="center">
-    <img style="display:block;text-align:center" src="./docs/readme-resources/gulp-statics-seed.svg" alt="logo-text" width="600" />
+    <img style="display:block;text-align:center" src="./docs/readme-resources/html-seed.svg" alt="logo-text" width="600" />
     <br/>
-    <h1 align="center">Gulp Static Seed</h1>
-    <p align="center" style="font-size: 1.2rem;">A Gulp starter kit for HTML5 static website development with a congenial build process and an optimized SASS workflow</p>
+    <h1 align="center">HTML Seed</h1>
+    <p align="center" style="font-size: 1.2rem;">A starter kit for HTML5 static website development with a congenial build process.</p>
 </p>
 
 <!-- Badges -->
 <p align="center">
-  <a href="https://travis-ci.org/brionmario/gulp-static-seed">
-    <img src="https://travis-ci.org/brionmario/gulp-static-seed.svg?branch=master" alt="Build Status" height="18">
+  <a href="https://travis-ci.org/brionmario/html-seed">
+    <img src="https://travis-ci.org/brionmario/html-seed.svg?branch=master" alt="Build Status" height="18">
   </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" height="18">
   </a>
-  <a href="https://david-dm.org/brionmario/gulp-static-seed">
-    <img src="https://david-dm.org/brionmario/gulp-static-seed/status.svg" alt="dependencies Status" height="18">
+  <a href="https://david-dm.org/brionmario/html-seed">
+    <img src="https://david-dm.org/brionmario/html-seed/status.svg" alt="dependencies Status" height="18">
   </a>
-  <a href="https://david-dm.org/brionmario/gulp-static-seed?type=dev">
-    <img src="https://david-dm.org/brionmario/gulp-static-seed/dev-status.svg" alt="devDependencies Status" height="18">
+  <a href="https://david-dm.org/brionmario/html-seed?type=dev">
+    <img src="https://david-dm.org/brionmario/html-seed/dev-status.svg" alt="devDependencies Status" height="18">
    </a>
   <a href="LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" height="18">
   </a>
-  <a href="https://codecov.io/gh/brionmario/gulp-static-seed">
-  <img src="https://codecov.io/gh/brionmario/gulp-static-seed/branch/master/graph/badge.svg" />
+  <a href="https://codecov.io/gh/brionmario/html-seed">
+  <img src="https://codecov.io/gh/brionmario/html-seed/branch/master/graph/badge.svg" />
 </a>
 </p>
 
@@ -37,8 +37,8 @@ This repository could be used by anyone who's looking for a quick starter kit fo
 
 # Quick Links
 
-| [Demo](https://gulp-static-seed.netlify.com) |
-| -------------------------------------------- |
+| [Demo](https://html-seed.netlify.com) |
+| ------------------------------------- |
 
 
 # Quick start
@@ -50,10 +50,10 @@ This repository could be used by anyone who's looking for a quick starter kit fo
 ```bash
 # clone our repository
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/brionmario/gulp-static-seed.git
+git clone --depth 1 https://github.com/brionmario/html-seed.git
 
 # change the directory
-cd gulp-static-seed
+cd html-seed
 
 # install the dependencies
 npm install
@@ -87,7 +87,7 @@ Once the dev server is fired up, it'll automatically open up a new tab. If not, 
 # File Structure
 
 ```
-gulp-static-seed/
+html-seed/
  ├── coverage/                      * unit test coverage reports
  ├── dist                           * stores production build artifacts
  ├── docs/                          * contains documents and document resources
@@ -150,7 +150,7 @@ In addition we've created `npm scripts` to run `gulp tasks` and `gulp` is instal
 ## Setting Up
 
 - `clone` the repository
-- `cd gulp-static-seed` to change the directory
+- `cd html-seed` to change the directory
 - `npm install` to install the dependencies with npm (installs bower dependencies as well using a post install script)
 
 ## Running the app
@@ -247,23 +247,23 @@ npm run build
 
 ## Deploy to Heroku
 
-Deploy to [Heroku](https://www.heroku.com/) using this template with one single click. Heroku has an awesome free and it is extremely easy to use.
+Deploy to [Heroku](https://www.heroku.com/) using this template with one single click. Heroku has an awesome free plan and it is extremely easy to use.
 
-Click [here](https://gulp-static-seed.herokuapp.com/) to see the deployed app.
+Click [here](https://html-seed.herokuapp.com/) to see the deployed app.
 
 <!-- Markdown snippet -->
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/brionmario/gulp-static-seed)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/brionmario/html-seed)
 
 ## Deploy to Netlify
 
 Deploy to [Netlify](https://www.netlify.com/) using this template with one single click. It has an awesome free plan and a nifty [CLI](https://github.com/netlify/netlify-cli) which makes the deployment process much easier.
 
-Click [here](https://gulp-static-seed.netlify.com/) to see the deployed app.
+Click [here](https://html-seed.netlify.com/) to see the deployed app.
 
 <!-- Markdown snippet -->
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/brionmario/gulp-static-seed)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/brionmario/html-seed)
 
 # Built With
 
@@ -284,7 +284,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/25959096?v=4" width="80px;"/><br /><sub><b>Brion Mario</b></sub>](http://www.brionmario.com/)<br />[💻](https://github.com/brionmario/gulp-static-seed/commits?author=brionmario "Code") [📖](https://github.com/brionmario/gulp-static-seed/commits?author=brionmario "Documentation") [🐛](https://github.com/brionmario/gulp-static-seed/issues?q=author%3Abrionmario "Bug reports") [⚠️](https://github.com/brionmario/gulp-static-seed/commits?author=brionmario "Tests") |
+| [<img src="https://avatars3.githubusercontent.com/u/25959096?v=4" width="80px;"/><br /><sub><b>Brion Mario</b></sub>](http://www.brionmario.com/)<br />[💻](https://github.com/brionmario/html-seed/commits?author=brionmario "Code") [📖](https://github.com/brionmario/html-seed/commits?author=brionmario "Documentation") [🐛](https://github.com/brionmario/html-seed/issues?q=author%3Abrionmario "Bug reports") [⚠️](https://github.com/brionmario/html-seed/commits?author=brionmario "Tests") |
 | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->

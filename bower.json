@@ -1,6 +1,6 @@
 {
-  "name": "gulp-static-seed",
-  "description": "A Gulp starter kit for HTML5 static website development with a congenial build process",
+  "name": "html-seed",
+  "description": "A starter kit for HTML5 static website development with a congenial build process",
   "main": "",
   "authors": ["Brion Mario"],
   "license": "MIT",
@@ -13,7 +13,7 @@
     "apareciumlabs",
     "seed"
   ],
-  "homepage": "https://github.com/brionmario/gulp-static-seed",
+  "homepage": "https://github.com/brionmario/html-seed",
   "private": true,
   "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
