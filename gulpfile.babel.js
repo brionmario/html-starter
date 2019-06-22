@@ -74,12 +74,12 @@ const CONFIG = {
   },
   paths: {
     dev: {
-      root: 'temp',
-      scripts: 'temp/js',
-      styles: 'temp/css',
-      libs: 'temp/libs',
-      assets: 'temp/assets',
-      fonts: 'temp/assets/fonts'
+      root: 'dev',
+      scripts: 'dev/js',
+      styles: 'dev/css',
+      libs: 'dev/libs',
+      assets: 'dev/assets',
+      fonts: 'dev/assets/fonts'
     },
     src: {
       root: 'src',
@@ -225,7 +225,7 @@ gulp.task('styles:lint', () => {
 });
 
 /**
- * Gulp script to clean the target folders i.e. `temp` & `dist`
+ * Gulp script to clean the target folders i.e. `dev` & `dist`
  */
 gulp.task('clean', () => {
   if (gutil.env.env === 'production') {

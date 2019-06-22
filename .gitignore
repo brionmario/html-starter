@@ -1,6 +1,6 @@
 # Output
 dist
-temp
+dev
 
 #Bower  Components
 /src/bower_components/

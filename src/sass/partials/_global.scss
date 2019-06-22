@@ -1,6 +1,3 @@
-.center-text {
-  text-align: center;
-}
 .display-table {
   display: table;
   height: 100%;
@@ -11,19 +8,19 @@
   vertical-align: middle;
 }
 ::-webkit-input-placeholder {
-  font-size: .9em;
+  font-size: 0.9em;
   letter-spacing: 1px;
 }
 ::-moz-placeholder {
-  font-size: .9em;
+  font-size: 0.9em;
   letter-spacing: 1px;
 }
 :-ms-input-placeholder {
-  font-size: .9em;
+  font-size: 0.9em;
   letter-spacing: 1px;
 }
 :-moz-placeholder {
-  font-size: .9em;
+  font-size: 0.9em;
   letter-spacing: 1px;
 }
 .full-height {
@@ -35,12 +32,12 @@
 .font-white {
   color: $white;
 }
-.main-area{
+.main-area {
   position: relative;
   height: $main-content-area-height;
   color: $white;
 }
-.overlay{
+.overlay {
   background-repeat: no-repeat;
   background-image: url(assets/img/bg.png);
   background-size: cover;

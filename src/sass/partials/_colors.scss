@@ -1,15 +1,29 @@
+// Theme colours
 $primary-color: #0d1421 !default;
 $secondary-color: #f1582d !default;
-$tertiary-color: #26334A !default;;
+$tertiary-color: #26334a !default;
 
+// Font colours
+$default-font-color: #333333;
+$default-font-color-light: rgba(51, 51, 51, 0.7);
+$default-font-color-highlight: #041e43;
+$default-lighter-font-color: #6b6b6b;
+
+// General colours
 $white: #ffffff;
 $black: #000000;
 $gallery: #eeeeee;
-$porcelain: #F1F2F3;
+$porcelain: #f1f2f3;
 $dark-gray: #494949;
 $dusty-gray: #999999;
 
 // Social
-$facebook-icon-color: #2A61D6;
-$twitter-icon-color: #3AA4F8;
+$facebook-icon-color: #2a61d6;
+$twitter-icon-color: #3aa4f8;
 $github-icon-color: #292929;
+
+// Notification colours
+$success-color: #87cb16 !default;
+$warning-color: #ffa534 !default;
+$info-color: #23ccef !default;
+$danger-color: darken(#fb404b, 8%) !default;
