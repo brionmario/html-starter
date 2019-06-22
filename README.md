@@ -1,5 +1,5 @@
 <p align="center">
-    <img style="display:block;text-align:center" src="./docs/readme-resources/html-seed.svg" alt="logo-text" width="600" />
+    <img style="display:block;text-align:center" src="./docs/readme-resources/html-seed.svg" alt="logo-text" width="300" />
     <br/>
     <h1 align="center">HTML Seed</h1>
     <p align="center" style="font-size: 1.2rem;">A starter kit for HTML5 static website development with a congenial build process.</p>
