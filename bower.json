@@ -1,5 +1,5 @@
 {
-  "name": "html-seed",
+  "name": "html-starter",
   "description": "A starter kit for HTML5 static website development with a congenial build process",
   "main": "",
   "authors": ["Brion Mario"],
@@ -11,9 +11,10 @@
     "html",
     "responsive",
     "apareciumlabs",
+    "starter",
     "seed"
   ],
-  "homepage": "https://github.com/brionmario/html-seed",
+  "homepage": "https://github.com/brionmario/html-starter",
   "private": true,
   "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {

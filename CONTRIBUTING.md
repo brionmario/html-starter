@@ -1,4 +1,4 @@
-# Contributing to HTML Seed
+# Contributing to HTML Starter
 
 As a contributor, here are the guidelines we would like you to follow:
 

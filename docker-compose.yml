@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    container_name: html-seed
+    container_name: html-starter
     restart: always
     build: .
     ports:
