@@ -39,7 +39,7 @@ https://stackblitz.com or similar (you can use this template as a starting point
 ## Environment
 
 <pre><code>
-HTML Seed: X.Y.Z
+HTML Starter: X.Y.Z
 
 Browser:
 

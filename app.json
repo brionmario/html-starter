@@ -1,8 +1,8 @@
 {
-  "name": "HTML Seed by Aparecium Labs",
+  "name": "HTML Starter by Aparecium Labs",
   "description": "A starter kit for HTML5 static website development with a congenial build process",
-  "repository": "https://github.com/brionmario/html-seed",
-  "logo": "https://raw.githubusercontent.com/brionmario/html-seed/master/docs/readme-resources/html-seed.svg?sanitize=true",
+  "repository": "https://github.com/brionmario/html-starter",
+  "logo": "https://raw.githubusercontent.com/brionmario/html-starter/master/docs/readme-resources/html-starter.svg?sanitize=true",
   "keywords": [
     "gulp",
     "css",
@@ -10,6 +10,7 @@
     "html",
     "responsive",
     "apareciumlabs",
+    "starter",
     "seed"
   ]
 }
